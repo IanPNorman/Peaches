@@ -24,7 +24,6 @@ In the wardrobe you find a bunch of exquisite dresses and suits
 (link-reveal:"''Change''",(t8n:"dissolve"))[ You change your clothes]
 
 
-
 :: \ Wardrobe2 {"position":"1000,875","size":"100,100"}
 Behind the dresses you find a box
 [[Go back -> Wardrobe]] 
@@ -33,7 +32,7 @@ Behind the dresses you find a box
 
 :: \ Window {"position":"1137.5,750","size":"100,100"}
 There is a large drop leading to imminent death but you notice another window below yours
-[[Go back ->RoyalChamber]] 
+[[Go back ->RoyalChamber]]
 
 
 :: Bed {"position":"887.5,750","size":"100,100"}
@@ -74,7 +73,6 @@ YOU ESCAPED THE DEMO
 
 
 :: RoyalChamber {"position":"1075,625","size":"100,100"}
-
 You are standing in the Royal Chamber and you look around. 
 (link-reveal:"Eat",(t8n:"dissolve"))[ You are now full]
 [[Examine Bed ->Bed]]
@@ -84,6 +82,10 @@ $willToEscape
 [[Examine Window -> Window]]
 [[Examine Door ->Door]]
 ]
+
+
+:: Test {"position":"675,850","size":"100,100"}
+Test
 
 
 :: init [startup] {"position":"875,475","size":"100,100"}
