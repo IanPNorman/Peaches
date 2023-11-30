@@ -12,48 +12,65 @@ Peaches
 }
 
 
-:: \ Bed2 {"position":"887.5,875","size":"100,100"}
-Under the bed you find _____
-[[Go Back ->Bed]]
+:: \ Day {"position":"1875,175","size":"100,100"}
+You sneak out during the day. The guards see you. They lock you back up in the royal chamber. However, they forget to take the key.
+[[Back to chamber ->RoyalChamber]]
 
 
-:: \ Wardrobe {"position":"1012.5,750","size":"100,100"}
-In the wardrobe you find a bunch of exquisite dresses and suits
+
+:: \ Wardrobe {"position":"1350,575","size":"100,100"}
+You look through the wardrobe and find an old ball gown, a jester hat, a pair of mismatched shoes, and a key.
+(set: $hasKey to true)
+[[Pick up the gown ->Gown]]
+[[Pick up the hat ->Hat]]
+[[Pick up the shoes ->Shoes]]
+[[Pick up the key ->Key]]
+
+
+
+:: \ Window {"position":"1400,200","size":"100,100"}
+You look out the window and, there is a large drop to the castle floor, leading to probable serious injury or death.
+[[Jump ->Death]]
+[[It's not worth it ->RoyalChamber]]
+
+
+
+:: Bed {"position":"1400,450","size":"100,100"}
+You do not find anything under the bed.
 [[Go back ->RoyalChamber]] 
-[[Move clothes aside -> Wardrobe2]]
-(link-reveal:"''Change''",(t8n:"dissolve"))[ You change your clothes]
 
 
-:: \ Wardrobe2 {"position":"1000,875","size":"100,100"}
-Behind the dresses you find a box
-[[Go back -> Wardrobe]] 
-(link-reveal:"Open Box",(t8n:"dissolve"))[In the box you find a key(set: $hasKey to true)]
+
+:: Death {"position":"1375,25","size":"100,100"}
+You jump and fall 5 stories to your immediate death on the cobblestone floor.
+[[Restart ->Level 1]]
 
 
-:: \ Window {"position":"1137.5,750","size":"100,100"}
-There is a large drop leading to imminent death but you notice another window below yours
-[[Go back ->RoyalChamber]]
-
-
-:: Bed {"position":"887.5,750","size":"100,100"}
-Under the bed you do not see anything
-[[Go back ->RoyalChamber]] 
-(link-reveal:"''Sleep''",(t8n:"dissolve"))[ After your slumber, you feel motivated to escape and look around the room to see (set: $willToEscape to true)]
-
-$willToEscape[
-[[Move Bed-> Bed2]]
+:: Door {"position":"1525,375","size":"100,100"}
+The door is locked.
+(if: $hasKey)[
+  [[Open the door with the key->Level 2]]
 ]
+[[Go back->RoyalChamber]]
 
 
-:: Door {"position":"1262.5,750","size":"100,100"}
-The door is  locked
-[[Go back ->RoyalChamber]] 
-$hasKey[
-[[Leave ->Level 2]] 
-]
 
 
-:: Ideas {"position":"1050,350","size":"100,100"}
+:: Dressing room {"position":"2200,550","size":"100,100"}
+
+
+
+:: Gown {"position":"1225,700","size":"100,100"}
+This old ball gown may be pretty, but it is not very useful.
+[[Keep looking-> Wardrobe]]
+
+
+:: Hat {"position":"1350,700","size":"100,100"}
+This jester hat makes noise when you move, probably not ideal for an escape.
+[[Keep looking-> Wardrobe]]
+
+
+:: Ideas {"position":"900,200","size":"100,100"}
 IDEAS: 
 Level 1:
 Creat an inventory system, can find a key for the door, tie the clothes together as a rope or a hidden door in the wardrobe or under the bed
@@ -63,29 +80,48 @@ Creat an inventory system, can find a key for the door, tie the clothes together
 
 
 
-:: Level 1 {"position":"1075,500","size":"100,100"}
-This story start with you, Princess Peach. You are once again trapped in Bowsers castle, but you aren't going to wait to be rescued this time. Its time to escape o n your own. 
+:: Key {"position":"1600,550","size":"100,100"}
+The key was from a previous prisoner that bribed one of the guards to obtain it, it looks like it fits the chamber door.
+[[Try to unlock the door ->Door]]
+
+
+
+:: Level 1 {"position":"1100,375","size":"100,100"}
+This story starts with you, Princess Peach. You are once again trapped in Bowser's castle, but you aren't going to wait to be rescued this time. It's time to escape on your own.
 [[Start ->RoyalChamber]]
 
 
-:: Level 2 {"position":"1425,600","size":"100,100"}
-YOU ESCAPED THE DEMO
+
+:: Level 2 {"position":"1700,425","size":"100,100"}
+Congratulations! You unlocked the door. You walk out and see guards patrolling the area.
+[[Sneak out->Sneaking Out]]
 
 
-:: RoyalChamber {"position":"1075,625","size":"100,100"}
+:: Night {"position":"2025,425","size":"100,100"}
+You wait until night to sneak out. The guards cannot see you in the dark and you run out of the royal chamber. You sneak around until you find the dressing room and hide there.
+[[Hide in the dressing room ->Dressing room]]
+
+
+:: RoyalChamber {"position":"1250,375","size":"100,100"}
 You are standing in the Royal Chamber and you look around. 
-(link-reveal:"Eat",(t8n:"dissolve"))[ You are now full]
-[[Examine Bed ->Bed]]
-$willToEscape
 [Looking around the room again you see
-[[Examine Wardrobe-> Wardrobe]]
 [[Examine Window -> Window]]
 [[Examine Door ->Door]]
+[[Examine Bed ->Bed]]
+[[Examine Wardrobe-> Wardrobe]]
 ]
 
 
-:: Test {"position":"675,850","size":"100,100"}
-Test
+:: Shoes {"position":"1475,700","size":"100,100"}
+This pair of mismatched shoes is not going to be of much use.
+[[Keep looking-> Wardrobe]]
+
+
+:: Sneaking Out {"position":"1850,425","size":"100,100"}
+Should you try and sneak out now, or wait until night when it’s dark?
+[[Sneak out now -> Day]]
+[[Wait until night ->Night]]
+
 
 
 :: init [startup] {"position":"875,475","size":"100,100"}
