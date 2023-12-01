@@ -12,13 +12,13 @@ Peaches
 }
 
 
-:: \ Day {"position":"1875,175","size":"100,100"}
+:: \ Day {"position":"1775,250","size":"100,100"}
 You sneak out during the day. The guards see you. They lock you back up in the royal chamber. However, they forget to take the key.
 [[Back to chamber ->RoyalChamber]]
 
 
 
-:: \ Wardrobe {"position":"1350,575","size":"100,100"}
+:: \ Wardrobe {"position":"1250,525","size":"100,100"}
 You look through the wardrobe and find an old ball gown, a jester hat, a pair of mismatched shoes, and a key.
 (set: $hasKey to true)
 [[Pick up the gown ->Gown]]
@@ -28,7 +28,7 @@ You look through the wardrobe and find an old ball gown, a jester hat, a pair of
 
 
 
-:: \ Window {"position":"1400,200","size":"100,100"}
+:: \ Window {"position":"1425,200","size":"100,100"}
 You look out the window and, there is a large drop to the castle floor, leading to probable serious injury or death.
 [[Jump ->Death]]
 [[It's not worth it ->RoyalChamber]]
@@ -41,7 +41,7 @@ You do not find anything under the bed.
 
 
 
-:: Death {"position":"1375,25","size":"100,100"}
+:: Death {"position":"1225,200","size":"100,100"}
 You jump and fall 5 stories to your immediate death on the cobblestone floor.
 [[Restart ->Level 1]]
 
@@ -56,16 +56,12 @@ The door is locked.
 
 
 
-:: Dressing room {"position":"2200,550","size":"100,100"}
-
-
-
-:: Gown {"position":"1225,700","size":"100,100"}
+:: Gown {"position":"1150,675","size":"100,100"}
 This old ball gown may be pretty, but it is not very useful.
 [[Keep looking-> Wardrobe]]
 
 
-:: Hat {"position":"1350,700","size":"100,100"}
+:: Hat {"position":"1275,675","size":"100,100"}
 This jester hat makes noise when you move, probably not ideal for an escape.
 [[Keep looking-> Wardrobe]]
 
@@ -80,7 +76,7 @@ Creat an inventory system, can find a key for the door, tie the clothes together
 
 
 
-:: Key {"position":"1600,550","size":"100,100"}
+:: Key {"position":"1525,550","size":"100,100"}
 The key was from a previous prisoner that bribed one of the guards to obtain it, it looks like it fits the chamber door.
 [[Try to unlock the door ->Door]]
 
@@ -92,7 +88,7 @@ This story starts with you, Princess Peach. You are once again trapped in Bowser
 
 
 
-:: Level 2 {"position":"1700,425","size":"100,100"}
+:: Level 2 {"position":"1675,450","size":"100,100"}
 Congratulations! You unlocked the door. You walk out and see guards patrolling the area.
 [[Sneak out->Sneaking Out]]
 
@@ -112,12 +108,12 @@ You are standing in the Royal Chamber and you look around.
 ]
 
 
-:: Shoes {"position":"1475,700","size":"100,100"}
+:: Shoes {"position":"1400,625","size":"100,100"}
 This pair of mismatched shoes is not going to be of much use.
 [[Keep looking-> Wardrobe]]
 
 
-:: Sneaking Out {"position":"1850,425","size":"100,100"}
+:: Sneaking Out {"position":"1825,425","size":"100,100"}
 Should you try and sneak out now, or wait until night when it’s dark?
 [[Sneak out now -> Day]]
 [[Wait until night ->Night]]
