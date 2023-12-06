@@ -274,7 +274,7 @@ You find your way around until you find the lever to get you into the outer cour
 
 Who is Bowser's Wizard? 
 
-[Kameek ->Wrong]]
+[[Kameek ->Wrong]]
 [[Kamek ->Kamek]]
 [[Lumos ->Wrong]]
 [[Leemos ->Wrong]]
@@ -324,6 +324,7 @@ Wrong!
 
 :: You win {"position":"3850,300","size":"100,100"}
 You win! Freedom at last!
+[[Restart ->Level 1]]
 
 
 :: dead end {"position":"3325,50","size":"100,100"}
