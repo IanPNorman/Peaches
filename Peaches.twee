@@ -12,33 +12,11 @@ Peaches
 }
 
 
-:: \ Call Daisy for help {"position":"3100,1400","size":"100,100"}
-Bowser is full of rage! There is no way that you can defeat him on your own. You call Daisy on your speed dial and she drifts in her kart. Daisy runs over Bowser with her kart and Bowser is knocked out! You guys take this time to escape.
-[[The End ->You win]]
-
-
-:: \ Call Mario for help {"position":"3200,1400","size":"100,100"}
-Bowser is full of rage! There is no way that you can defeat him on your own. You call Mario on your speed dial and he drifts in her kart. Mario tries to take Bowser head on, One-on-One. Bowser is full of rage and comes up on top and Mario is knocked out. You are not so strong and independant now, are you.
-[[Restart ->Level 1]]
-
-
 :: \ Lair {"position":"4200,450","size":"100,100"}
 You stand in Bowser's Lair, heart pounding. Bowser is standing in front of you, and you need to act fast. What should you do?
 [[Act nonchalant ->nonchalant]]
 [[Offer help ->Offer help]]
 [[Distraction ->Distraction]]
-
-
-:: \ Level 5 {"position":"3100,1300","size":"100,100"}
-You finally escape, but all of a sudden Bowser appears out of nowhere. Bowser is furious that you escaped. What do you do next?
-[[Call Daisy for help -> Call Daisy for help]]
-[[Call Mario for help -> Call Mario for help]]
-[[Play along with Bowser and betray him to leave -> Play along]]
-
-
-:: \ Play along {"position":"3000,1400","size":"100,100"}
-Bowser is full of rage! There is no way that you can defeat him on your own. You know that Bowser is in love with you so you try to talk things out by saying that you will live with him forever. However, he is so full of rage, he can't even hear you.
-[[Restart ->Level 1]]
 
 
 :: \ Task {"position":"2550,900","size":"100,100"}
@@ -97,6 +75,23 @@ You do not find anything under the bed.
 :: Boo Costume {"position":"2450,600","size":"100,100"}
 You get into a boo outfit. You leave the room, but there is a guard there! The guard was about to leave but he saw something weird. “If you are a boo, why do you have legs?" They lock you back up in the royal chamber.
 [[Back to chamber ->RoyalChamber]]
+
+
+:: Bookshelf {"position":"1125,925","size":"100,100"}
+Looking at the bookshelf, the books all look uninteresting
+(link-replace:"Book",(t8n:"dissolve"))[ It is a book, written by someone, about something... ]
+(link-replace:"Book",(t8n:"dissolve"))[ Book... by somone... it doesn't matter]
+(link-replace:"Book",(t8n:"dissolve"))[ Just another book, why do you care]
+(link-replace:"Book",(t8n:"dissolve"))[ ooooh, this one looks interesting. SIKE. i lied]
+(link-replace:"Book",(t8n:"dissolve"))["How to Defeat Bowser"
+* (link-rerun:"Read")[{
+(t8n:"zoom")+(t8n-time:0.4s)(dialog:"You can't...")}]]
+(link-replace:"Book",(t8n:"dissolve"))[You hear a metalic clank coming from behind you
+(set: $secretPassage to "open")]
+(link-replace:"Book",(t8n:"dissolve"))[ "A Song of Ice and Fire: Winds of Winter by George RR Martin!!! 
+* (link-rerun:"Read")[{
+(t8n:"zoom")+(t8n-time:0.4s)(dialog:"lol")}]]
+(link-replace:"Book",(t8n:"dissolve"))[Well, you must really like books.]
 
 
 :: Captured {"position":"1700,1100","size":"100,100"}
@@ -170,9 +165,20 @@ The Emergency Exit works, and you are escape!
 [[The end ->You win]]
 
 
+:: Escape {"position":"925,1500","size":"100,100"}
+You have successfully escaped the maze 
+
+
 :: Fall Death {"position":"1400,650","size":"100,100"}
 You jump and fall 5 stories to your immediate death on the cobblestone floor.
 [[Restart ->Level 1]]
+
+
+:: FalseDeadend {"position":"1000,1125","size":"100,100"}
+The path was in fact, not a dead end...
+Ahead you see a gate 
+[[Forward ->Gate]]
+[[Backward ->deadendForward]]
 
 
 :: Flee the scene {"position":"2550,800","size":"100,100"}
@@ -183,6 +189,15 @@ You try to run away, but the guards see you, quickly apprehend you and you are b
 :: Gas Death {"position":"1900,1400","size":"100,100"}
 As you keep going, the nausea only gets stronger, and the corridor is now pitch black. You eventually hit a dead end, but it is too late. You faint, only to never wake up.
 [[Restart ->Level 1]]
+
+
+:: Gate {"position":"1000,1250","size":"100,100"}
+You push on the gate, but it does not open. You notice a slot for a key. Without the maze key you cannot escape from here. 
+(if: $mazeKey is true)[ 
+[[Try key you found in the maze ->Escape]]]
+(if: $hasKey is true)[
+(link-replace:"Try key you found in the royal chamber",(t8n:"dissolve"))[Nothing happens, the gate must require some other key.]]
+[[Go back->FalseDeadend]]
 
 
 :: Gown {"position":"1150,650","size":"100,100"}
@@ -283,44 +298,98 @@ You have no patience and decide to make a run for it.
 Mario comes to the rescure and you are saved.. But at what cost. You leave and are brought to you Mario's home. You have escaped, but you are still not free. The only thing that has changed is the bird cage which surrounds you. Who will rescue you now? Bowser?
 
 
-:: Maze {"position":"800,800","size":"100,100"}
-Maze
-(if: $mazeTurn === 3)[
-(set: $defualtMaze to false)
-(set: $deadEnd to true)
+:: Maze {"position":"925,975","size":"100,100"}
+(set: $mazeTurn to $mazeTurn + 1)
+(set: $mazeType to (random: 1,5))
+You have made your $mazeTurn sth decision
+(if: $mazeTurn > 14)[
+You grow dreary of these endless halls
+[[Left ->MazeGood1]]
+[[Forward ->FalseDeadend]] The path ahead has a (link-rerun:"sign")[{
+(t8n:"zoom")+(t8n-time:0.4s)(dialog:"DEAD END AHEAD")}]
+[[Right ->MazeGood1]]
+[[Backwards->Maze]]]
+(if: $mazeTurn < 15)[
+(if: $mazeType is 1)[(set: $previous to "left")
+There is a an  (link-rerun:"engraving")[{
+(t8n:"zoom")+(t8n-time:0.4s)(dialog:"<--")}] on the wall.
+[[Left ->deadendCont]]
+[[Forward ->MazeGood1]]
+[[Right ->Maze]]
+[[Backwards->Maze]]]
+(if: $mazeType is 2)[(set: $previous to "right")
+There is a paper with a  (link-rerun:"note")[{
+(t8n:"zoom")+(t8n-time:0.4s)(dialog:"RIGHT")}] on the ground 
+[[Left ->Maze]]
+[[Forward ->Maze]]
+[[Right ->deadendCont]]
+[[Backwards->Maze]]]
+(if: $mazeType is 3)[(set: $previous to "right")
+There is a paper with a (link-rerun:"note")[{
+(t8n:"zoom")+(t8n-time:0.4s)(dialog:"left :)")}] on the wall
+[[Left ->MazeGood1]]
+[[Forward ->Maze]]
+[[Right ->deadendCont]]
+[[Backwards->Maze]]]
+(if: $mazeType is 4)[(set: $previous to "forward")
+All of the paths look the same... 
+[[Left ->Maze]]
+[[Forward ->deadendCont]]
+[[Right ->MazeGood1]]
+[[Backwards->Maze]]]
+(if: $mazeType is 5)[(set: $previous to "none")
+You must keep going
+[[Left ->FalseDeadend]] The path has a (link-rerun:"sign")[{
+(t8n:"zoom")+(t8n-time:0.4s)(dialog:"DEAD END AHEAD")}]
+[[Forward ->MazeGood1]]
+[[Right ->FalseDeadend]] The path has a (link-rerun:"sign")[{
+(t8n:"zoom")+(t8n-time:0.4s)(dialog:"DEAD END AHEAD")}]
+[[Backwards->Maze]]]
 ]
-(if: $defualtMaze)[
+
+
+
+
+
+:: MazeExit {"position":"850,1375","size":"100,100"}
+The branching paths have disappeared and only one direction remains. But the wind grows stronger as you move forward
+[[Forward ->Escape]]
+[[Backward ->MazeGood1Cont]]
+
+
+:: MazeGood1 {"position":"850,1125","size":"100,100"}
+(set: $mazeTurn to $mazeTurn + 1)
+You have made your $mazeTurn sth decision
+But this time you see something new
+[[Left ->MazeGood1Cont]] - You see a faint glow in the distance
+[[Forward ->Maze]]
+[[Right ->Maze]]
+[[Backwards->Maze]]
+(set: $mazeTurn to $mazeTurn +1 )
+
+
+:: MazeGood1Cont {"position":"850,1250","size":"100,100"}
+[[Left ->Maze]]
+[[Forward ->MazeExit]] - you feel a faint wind coming from this direction
+(link-replace:"Right",(t8n:"dissolve"))[ You must be stupid, I SAID ]- there is a a patch of lava
+[[Backwards ->MazeGood1]]
+(set: $mazeTurn to $mazeTurn + 1)
+
+
+:: MazeIntro {"position":"925,800","size":"100,100"}
+(set: $mazeTurn to 0)
+(set: $deadEnds to 0)
+(set: $previous to "none")
+(set: $mazeKey to false)
+The floor below you dissappears and you fall for a brief moment. You sustain a small scrape but get up
+(link-replace:"Look around",(t8n:"dissolve"))[ 
+You look around and realize you must be in a maze.
+(link-replace:"continue",(t8n:"dissolve"))[ 4 paths lie in front of you, which way will you go
 [[Left ->Maze]]
 [[Forward ->Maze]]
 [[Right ->Maze]]
 [[Backwards->Maze]]
-$mazeTurn: $mazeTurn + 1
-]
-(if: $deadEnd)[
-[[TurnBack->Maze]]
-$mazeTurn: $mazeTurn + 1
-]
-(if: $mazeAlt1)[
-[[Left ->Maze]]
-[[Forward ->Maze]]
-[[Right ->Maze]]
-[[Backwards->Maze]]
-$mazeTurn: $mazeTurn + 1
-]
-(if: $mazeAlt1)[
-[[Left - You see a faint glow in the distance ->Maze]]
-[[Forward ->Maze]]
-[[Right ->Maze]]
-[[Backwards->Maze]]
-$mazeTurn: $mazeTurn + 1
-]
-(if: $mazeAlt2)[
-[[You see a faint glow in the distance ->Maze]]
-[[Forward there is a a patch of lava ->Maze]]
-[[Right ->Maze]]
-[[Backwards - you feel a faint wind->Maze]]
-$mazeTurn: $mazeTurn + 1
-]
+]]
 
 
 :: Offer help {"position":"4100,550","size":"100,100"}
@@ -412,6 +481,59 @@ You think it's a dead end and decide to go back, but at this point you are compl
 [[Restart ->Level 1]]
 
 
+:: deadendCont {"position":"550,975","size":"100,100"}
+The branching paths have disappeared and only one direction remains. 
+[[Forward ->deadendLast]]
+(if: $previous is "left")[
+[[Backward ->deadendLeft]]]
+(if: $previous is "right")[
+[[Backward ->deadendRight]]]
+(if: $previous is "forward")[
+[[Backward ->deadendForward]]]
+(set: $mazeBad to $mazebad + 1)
+
+
+:: deadendForward {"position":"725,875","size":"100,100"}
+(set: $mazeTurn to $mazeTurn + 1)
+You have made your $mazeTurn sth decision
+[[Left ->Maze]]
+[[Forward ->deadendCont]]
+[[Right ->Maze]]
+[[Backwards->Maze]]
+(set: $previous to "forward")[
+
+
+:: deadendLast {"position":"400,975","size":"100,100"}
+You have reached a dead end, you must turn back
+(set: $deadEnds to $deadEnds + 1)
+[[Go Back ->deadendCont]]
+(if: visits is 2)[
+
+But this time you notice there is chest
+(link-replace:"Open",(t8n:"dissolve"))[ Inside you find a key, maybe it will be usefull
+(set: $mazeKey to true)]]
+
+
+:: deadendLeft {"position":"725,975","size":"100,100"}
+(set: $mazeTurn to $mazeTurn + 1)
+You have made your $mazeTurn sth decision
+The arrow was a lie
+[[Left ->deadendCont]]
+[[Forward ->Maze]]
+[[Right ->Maze]]
+[[Backwards->Maze]]
+
+
+:: deadendRight {"position":"725,1075","size":"100,100"}
+(set: $mazeTurn to $mazeTurn + 1)
+You have made your $mazeTurn sth decision
+The note is gone...
+[[Left ->Maze]]
+[[Forward ->Maze]]
+[[Right ->deadendCont]]
+[[Backwards->Maze]]
+
+
 :: dieIndependant {"position":"4050,1500","size":"100,100"}
 Though you give it your all, sometimes that isnt enough. Bowser defense is unmatched. Jumping into the air, he slams down letting out a large shockwave knocking you down. Though you gave your best, this it was all for naught. 
 [[Try Again->RoyalChamber]]
@@ -435,14 +557,8 @@ You tell the guards: “I mistakenly wandered into the castle can you help me go
 :: init [startup] {"position":"800,600","size":"100,100"}
 (set: $willToEscape to false)
 (set: $hasKey to false)
-(set: $defualtMaze to true)
-(set: $deadEnd to false)
-(set: $mazeAlt1 to false)
-(set: $mazeAlt2 to false)
-(set: $mazeTurn to 0)
 
-(set: $mazeGood to 0)
-(set: $mazeBad to 0)
+(set: $secretPassage to "closed")
 
 
 :: nonchalant {"position":"3700,725","size":"100,100"}
