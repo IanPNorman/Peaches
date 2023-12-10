@@ -12,12 +12,12 @@ Peaches
 }
 
 
-:: \ Call Daisy for help {"position":"3600,225","size":"100,100"}
+:: \ Call Daisy for help {"position":"3575,175","size":"100,100"}
 Bowser is full of rage! There is no way that you can defeat him on your own. You call Daisy on your speed dial and she drifts in her kart. Daisy runs over Bowser with her kart and Bowser is knocked out! You guys take this time to escape.
 [[The End ->You win]]
 
 
-:: \ Call Mario for help {"position":"3175,50","size":"100,100"}
+:: \ Call Mario for help {"position":"3450,50","size":"100,100"}
 Bowser is full of rage! There is no way that you can defeat him on your own. You call Mario on your speed dial and he drifts in her kart. Mario tries to take Bowser head on, One-on-One. Bowser is full of rage and comes up on top and Mario is knocked out. You are not so strong and independant now, are you.
 [[Restart ->Level 1]]
 
@@ -29,8 +29,7 @@ You stand in Bowser's Lair, heart pounding. Bowser is standing in front of you, 
 [[Distraction ->Distraction]]
 
 
-
-:: \ Level 5 {"position":"3250,175","size":"100,100"}
+:: \ Level 5 {"position":"3325,50","size":"100,100"}
 You finally escape, but all of a sudden Bowser appears out of nowhere. Bowser is furious that you escaped. What do you do next?
 [[Call Daisy for help -> Call Daisy for help]]
 [[Call Mario for help -> Call Mario for help]]
@@ -70,11 +69,32 @@ You look out the window and, there is a large drop to the castle floor, leading 
 [[It's not worth it ->RoyalChamber]]
 
 
+:: AllOut {"position":"3425,1225","size":"100,100"}
+You give it everything you have. After dodging several fireballs, Bowser is beginning to look winded. 
+(link-reveal:"Continue",(t8n:"dissolve"))
+[
+Out of nowhere Bowser hits you with his tail with a swift spin strike. 
+You are hurt badly. 
+[[Call Peach for help->DaisyWin]]
+[[Fight to the end->dieIndependant]]
+]
+
+
+
+
+:: AttackBowser {"position":"3300,1075","size":"100,100"}
+You charge Bowser head on, dodging his slow fists, you strike at every oppurtunity
+(link-reveal:"Continue",(t8n:"dissolve"))
+[
+As the battle goes on you realize your hits have little effect. 
+[[Call Mario for help->MarioLose]]
+[[Fight with all your might->AllOut]]
+]
+
 
 :: Bed {"position":"1400,450","size":"100,100"}
 You do not find anything under the bed.
-[[Go back ->RoyalChamber]] 
-
+[[Go back ->RoyalChamber]]
 
 
 :: Boo Costume {"position":"2425,175","size":"100,100"}
@@ -103,6 +123,18 @@ You decide not to let a little nausea slow you down, and even though the path fo
 [[Continue->Gas Death]]
 
 
+:: DaisyWin {"position":"3550,1225","size":"100,100"}
+Daisy answers your call for help rushes over her, drifting into the courtyard in her kart. Though you have done your best until this point sometimes getting helps from friends during times of need, is necessary. With Daisys help, Bowser is defeated and you escape. 
+[[The End ->You win]]
+
+
+:: DefendYourself {"position":"3425,1075","size":"100,100"}
+You prepare youself for whatever Bowser may throw at you. Unfortunately for you, he spits a fireball at you and you are badly hurt. 
+[[Call Mario for help->MarioLose]]
+[[Fight to the end->dieIndependant]]
+[[Call Peach for help->DaisyWin]]
+
+
 :: Distraction {"position":"3575,375","size":"100,100"}
 You shout, “Quick, I saw princess peach run across the courtyard!”
 [[Continue ->Distraction2]]
@@ -128,15 +160,12 @@ The door is locked.
 [[Go back->RoyalChamber]]
 
 
-
-
 :: Dry Bones Costume {"position":"2725,475","size":"100,100"}
 You get into a dry bones costume. You leave the room, but there is a guard there! The guard says “Hey! Dry bones are not supposed to be in the castle!”
 What do you do?
 [[Make an excuse ->excuse 1]]
 [[Make a different excuse ->esxcuse 2]]
 [[Flee the scene ->Flee the scene]]
-
 
 
 :: Emergency Exit {"position":"3800,475","size":"100,100"}
@@ -154,7 +183,6 @@ You try to run away, but the guards see you, quickly apprehend you and you are b
 [[Back to chamber ->RoyalChamber]]
 
 
-
 :: Gas Death {"position":"1225,150","size":"100,100"}
 As you keep going, the nausea only gets stronger, and the corridor is now pitch black. You eventually hit a dead end, but it is too late. You faint, only to never wake up.
 [[Restart ->Level 1]]
@@ -170,8 +198,6 @@ Across the hall you see the dressing room, which looks unoccupied. What will you
 [[Make a run for it->Make a run for it]]
 [[Find a hiding spot->Hiding in Shadows]]
 [[Observe patrols->Guard Patterns]]
-
-
 
 
 :: Guard Patterns {"position":"2125,450","size":"100,100"}
@@ -208,7 +234,7 @@ Creat an inventory system, can find a key for the door, tie the clothes together
 
 :: Kamek {"position":"3050,200","size":"100,100"}
 Correct! The lever pulls and the courtyard gate opens.
-[[continue -> Level 5]]
+[[continue ->Level 5 New]]
 
 
 :: Key {"position":"1525,550","size":"100,100"}
@@ -217,11 +243,9 @@ The key was from a previous prisoner that bribed one of the guards to obtain it,
 [[Try to unlock the door ->Door]]
 
 
-
 :: Level 1 {"position":"1100,375","size":"100,100"}
 This story starts with you, Princess Peach. You are once again trapped in Bowser's castle, but you aren't going to wait to be rescued this time. It's time to escape on your own.
 [[Start ->RoyalChamber]]
-
 
 
 :: Level 2 {"position":"1700,375","size":"100,100"}
@@ -237,6 +261,17 @@ You’re in the dressing room, surrounded by various outfits. It’s time to cho
 [[Boo Costume ->Boo Costume]]
 
 
+:: Level 5 New {"position":"3425,800","size":"100,100"}
+The exit from bowsers castle lies in front of you
+(link-reveal:"Leave",(t8n:"dissolve"))
+[
+With the exit only a few breaths away, Bowser drops from the castle walls
+He is furious
+[[Run->run]]
+[[Battle->battle]]
+]
+
+
 :: Look through {"position":"3425,325","size":"100,100"}
 You go door to door in hopes of finding an exit but with no luck. Before all hope is lost, there is still one door left to check. You open the door and walk straight into Bowser's Lair! 
 [[Continue -> Lair]]
@@ -245,6 +280,51 @@ You go door to door in hopes of finding an exit but with no luck. Before all hop
 :: Make a run for it {"position":"1850,250","size":"100,100"}
 You have no patience and decide to make a run for it.
 [[Continue ->Captured]]
+
+
+:: MarioLose {"position":"3250,1225","size":"100,100"}
+Mario comes to the rescure and you are saved.. But at what cost. You leave and are brought to you Mario's home. You have escaped, but you are still not free. The only thing that has changed is the bird cage which surrounds you. Who will rescue you now? Bowser? 
+
+
+
+:: Maze {"position":"1850,875","size":"100,100"}
+Maze
+(if: $mazeTurn === 3)[
+(set: $defualtMaze to false)
+(set: $deadEnd to true)
+]
+(if: $defualtMaze)[
+[[Left ->Maze]]
+[[Forward ->Maze]]
+[[Right ->Maze]]
+[[Backwards->Maze]]
+$mazeTurn: $mazeTurn + 1
+]
+(if: $deadEnd)[
+[[TurnBack->Maze]]
+$mazeTurn: $mazeTurn + 1
+]
+(if: $mazeAlt1)[
+[[Left ->Maze]]
+[[Forward ->Maze]]
+[[Right ->Maze]]
+[[Backwards->Maze]]
+$mazeTurn: $mazeTurn + 1
+]
+(if: $mazeAlt1)[
+[[Left - You see a faint glow in the distance ->Maze]]
+[[Forward ->Maze]]
+[[Right ->Maze]]
+[[Backwards->Maze]]
+$mazeTurn: $mazeTurn + 1
+]
+(if: $mazeAlt2)[
+[[You see a faint glow in the distance ->Maze]]
+[[Forward there is a a patch of lava ->Maze]]
+[[Right ->Maze]]
+[[Backwards - you feel a faint wind->Maze]]
+$mazeTurn: $mazeTurn + 1
+]
 
 
 :: Offer help {"position":"3475,525","size":"100,100"}
@@ -257,7 +337,7 @@ Unfortunately you fail to take into account that a Dry Bones is never nice or he
 [[Restart ->Level 1]]
 
 
-:: Only look {"position":"3450,75","size":"100,100"}
+:: Only look {"position":"3700,50","size":"100,100"}
 You give up after checking one door and decide to go back, but at this point you are completely lost. You wander in circles until you collapse and die of exhaustion.
 [[Restart ->Level 1]]
 
@@ -278,8 +358,6 @@ Who is Bowser's Wizard?
 [[Kamek ->Kamek]]
 [[Lumos ->Wrong]]
 [[Leemos ->Wrong]]
-
-
 
 
 :: Patrol Guard Outfit {"position":"2725,300","size":"100,100"}
@@ -322,14 +400,25 @@ Wrong!
 [[Try again ->Outer courtyard]]
 
 
-:: You win {"position":"3850,300","size":"100,100"}
+:: You win {"position":"3800,325","size":"100,100"}
 You win! Freedom at last!
 [[Restart ->Level 1]]
 
 
-:: dead end {"position":"3325,50","size":"100,100"}
+:: battle {"position":"3425,925","size":"100,100"}
+This is your only chance of escape. You must fend off bowsers attacks and escape on your own.
+Take the initiative and [[strike first->AttackBowser]]
+[[Take a defensive stance->DefendYourself]] and prepare yourself 
+
+
+:: dead end {"position":"3575,50","size":"100,100"}
 You think it's a dead end and decide to go back, but at this point you are completely lost. You wander in circles until you collapse and die of exhaustion.
 [[Restart ->Level 1]]
+
+
+:: dieIndependant {"position":"3400,1400","size":"100,100"}
+Though you give it your all, sometimes that isnt enough. Bowser defense is unmatched. Jumping into the air, he slams down letting out a large shockwave knocking you down. Though you gave your best, this it was all for naught. 
+[[Try Again->RoyalChamber]] 
 
 
 :: distraction {"position":"2275,350","size":"100,100"}
@@ -350,6 +439,14 @@ You tell the guards: “I mistakenly wandered into the castle can you help me go
 :: init [startup] {"position":"875,475","size":"100,100"}
 (set: $willToEscape to false)
 (set: $hasKey to false)
+(set: $defualtMaze to true)
+(set: $deadEnd to false)
+(set: $mazeAlt1 to false)
+(set: $mazeAlt2 to false)
+(set: $mazeTurn to 0)
+
+(set: $mazeGood to 0)
+(set: $mazeBad to 0)
 
 
 :: nonchalant {"position":"3100,475","size":"100,100"}
@@ -360,6 +457,10 @@ You say, "Oh hey bowser, I was looking for you to ask if you needed more help to
 :: nonchalant2 {"position":"3050,625","size":"100,100"}
 Unfortunately you fail to take into account that a Dry Bones is never nice or helpful, are your facade is easy to see through. Bowser promptly throws you off the castle walls to your death.
 [[Restart ->Level 1]]
+
+
+:: run {"position":"3300,925","size":"100,100"}
+You attempt to run but are quickly surrounded by Bowsers gaurds. Cornered you are captured and returned to the [[Royal Chamber->RoyalChamber]] 
 
 
 :: turn back {"position":"3425,650","size":"100,100"}
