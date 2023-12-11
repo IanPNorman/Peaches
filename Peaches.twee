@@ -4,24 +4,11 @@ Peaches
 
 :: StoryData
 {
-  "ifid": "61A6F5AC-4F1F-4A5B-B462-88635E247F08",
+  "ifid": "609d8995-eaba-4728-bd51-ea424bc74fbe",
   "format": "Harlowe",
   "format-version": "3.3.7",
-  "start": "Level 1",
   "zoom": 1
 }
-
-
-<<<<<<< HEAD
-=======
-:: \ Call Daisy for help {"position":"3100,1600","size":"100,100"}
-Bowser is full of rage! There is no way that you can defeat him on your own. You call Daisy on your speed dial and she drifts in her kart. Daisy runs over Bowser with her kart and Bowser is knocked out! You guys take this time to escape.
-[[The End ->You win]]
-
-
-:: \ Call Mario for help {"position":"3200,1600","size":"100,100"}
-Bowser is full of rage! There is no way that you can defeat him on your own. You call Mario on your speed dial and he drifts in her kart. Mario tries to take Bowser head on, One-on-One. Bowser is full of rage and comes up on top and Mario is knocked out. You are not so strong and independant now, are you.
-[[Restart ->Level 1]]
 
 
 :: \ Chest Room {"position":"2600,1900","size":"100,100"}
@@ -30,7 +17,7 @@ You kick through the bricks, finding a room with a chest behind them. Within the
 [[Return to pipe room ->Dungeon Room Pipe]]
 
 
-:: \ Daisy Help {"position":"3050,1200","size":"100,100"}
+:: \ Daisy Help {"position":"3075,1250","size":"100,100"}
 The Paratrooper questions nothing, and immediately flies off with the note. You thank the other guard, and continue to the exit, with no one expecting a thing.
 (set: $hasNote to false)
 (set: $daisyHelp to true)
@@ -46,7 +33,7 @@ You look through all the desk drawers, finding nothing but suspiciously bright p
 [[Go back ->RoyalChamber]]
 
 
-:: \ Destroy Bowser {"position":"3800,1500","size":"100,100"}
+:: \ Destroy Bowser {"position":"3850,1475","size":"100,100"}
 After using the Super Star, Bowser stands no chance. He is destroyed immediately by your fury. In order to avoid meeting the same fate, his minions all swear to follow you, Queen Peach.
 [[Rule the world alone ->You win]]
 
@@ -72,7 +59,6 @@ After using the Super Star, Bowser stands no chance. He is destroyed immediately
     [[Go North -> Dungeon Room Spikes]]
     [[Go East ->Dungeon Room 1]]
 ]
-
 
 
 :: \ Dungeon Room 1 Right {"position":"2700,1600","size":"100,100"}
@@ -123,6 +109,8 @@ You find a group of toads trapped in dungeon cells.
 
 
 >>>>>>> Seth
+
+
 :: \ Lair {"position":"4200,450","size":"100,100"}
 You stand in Bowser's Lair, heart pounding. Bowser is standing in front of you, and you need to act fast. What should you do?
 [[Act nonchalant ->nonchalant]]
@@ -132,11 +120,6 @@ You stand in Bowser's Lair, heart pounding. Bowser is standing in front of you, 
 
 <<<<<<< HEAD
 =======
-:: \ Level 5 {"position":"3100,1500","size":"100,100"}
-You finally escape, but all of a sudden Bowser appears out of nowhere. Bowser is furious that you escaped. What do you do next?
-[[Call Daisy for help -> Call Daisy for help]]
-[[Call Mario for help -> Call Mario for help]]
-[[Play along with Bowser and betray him to leave -> Play along]]
 
 
 :: \ No Help {"position":"2950,1200","size":"100,100"}
@@ -152,12 +135,6 @@ Bowsers guards are very stupid, the cell opens, and the grateful toads flee.
 [[Continue -> Dungeon Room 1 Left]]
 
 
-:: \ Play along {"position":"3000,1600","size":"100,100"}
-Bowser is full of rage! There is no way that you can defeat him on your own. You know that Bowser is in love with you so you try to talk things out by saying that you will live with him forever. However, he is so full of rage, he can't even hear you.
-[[Restart ->Level 1]]
-
-
->>>>>>> Seth
 :: \ Task {"position":"2550,900","size":"100,100"}
 The guards already know that Bowser would never accept tasks from a freelance Dry Bones. You are promptly thrown off the castle walls to your death.
 [[Restart ->Level 1]]
@@ -223,7 +200,9 @@ You get into a boo outfit. You leave the room, but there is a guard there! The g
 
 
 <<<<<<< HEAD
-:: Bookshelf {"position":"1125,925","size":"100,100"}
+
+
+:: Bookshelf {"position":"1200,925","size":"100,100"}
 Looking at the bookshelf, the books all look uninteresting
 (link-replace:"Book",(t8n:"dissolve"))[ It is a book, written by someone, about something... ]
 (link-replace:"Book",(t8n:"dissolve"))[ Book... by somone... it doesn't matter]
@@ -239,6 +218,8 @@ Looking at the bookshelf, the books all look uninteresting
 (t8n:"zoom")+(t8n-time:0.4s)(dialog:"lol")}]]
 (link-replace:"Book",(t8n:"dissolve"))[Well, you must really like books.]
 =======
+
+
 :: Break Character {"position":"2900,1100","size":"100,100"}
 The guard realizes you are an imposter, quickly apprehends you and takes you back to the Royal Chamber.
 [[Back to chamber ->RoyalChamber]]
@@ -287,8 +268,6 @@ Daisy answers your call for help rushes over her, drifting into the courtyard in
 You prepare youself for whatever Bowser may throw at you. Unfortunately for you, he spits a fireball at you and you are badly hurt. 
 [[Call for help->CallHelp]]
 [[Fight to the end->dieIndependant]]
-
-
 
 
 :: Distraction {"position":"4300,550","size":"100,100"}
@@ -345,7 +324,6 @@ You enter the dungeon beneath Bowser's castle. It is dark and full of treacherou
 ]
 
 
-
 :: Dungeon Room 1 {"position":"2500,1500","size":"100,100"}
 (if: $holdingMarker and $room1Marked is false)[
     (set: $room1Marked to true)
@@ -387,13 +365,11 @@ You hear blasting winds to the south, and rushing water to the north
 [[Go North -> Dungeon Room 1 Right]]
 
 
-
 :: Dungeon Room Pipe {"position":"2650,1800","size":"100,100"}
 You find a mysterious pipe in a mysterious room, with cracked bricks behind it.
 [[Go North ->Dungeon Room 2]]
 [[Follow the pipe ->Mystery Land]]
 (if: $independenceScore > 3 and $openedChest is false)[[Break through cracked bricks -> Chest Room]]
-
 
 
 :: Emergency Exit {"position":"4400,800","size":"100,100"}
@@ -402,7 +378,7 @@ The Emergency Exit works, and you are escape!
 
 
 :: Escape {"position":"925,1500","size":"100,100"}
-You have successfully escaped the maze 
+You have successfully escaped the maze
 
 
 :: Fall Death {"position":"1400,650","size":"100,100"}
@@ -534,7 +510,7 @@ You have no patience and decide to make a run for it.
 You leave and are brought to you Mario's home. You have escaped, but you are still not free. The only thing that has changed is the bird cage which surrounds you. Who will rescue you now? Bowser?
 
 
-:: Maze {"position":"925,975","size":"100,100"}
+:: Maze {"position":"875,975","size":"100,100"}
 (set: $mazeTurn to $mazeTurn + 1)
 (set: $mazeType to (random: 1,5))
 You have made your $mazeTurn sth decision
@@ -584,9 +560,6 @@ You must keep going
 ]
 
 
-
-
-
 :: MazeExit {"position":"850,1375","size":"100,100"}
 The branching paths have disappeared and only one direction remains. But the wind grows stronger as you move forward
 [[Forward ->Escape]]
@@ -612,7 +585,7 @@ But this time you see something new
 (set: $mazeTurn to $mazeTurn + 1)
 
 
-:: MazeIntro {"position":"925,800","size":"100,100"}
+:: MazeIntro {"position":"875,825","size":"100,100"}
 (set: $mazeTurn to 0)
 (set: $deadEnds to 0)
 (set: $previous to "none")
@@ -640,7 +613,6 @@ You emerge from the pipe in a land you have never seen before. It looks nice, bu
 :: Note {"position":"1000,900","size":"100,100"}
 You write a note, explaining how you got kidnapped again and asking for help.
 (set: $hasNote to true)[[Finish writing and seal envelope -> Desk]]
-
 
 
 :: Offer help {"position":"4100,550","size":"100,100"}
@@ -762,6 +734,8 @@ You think it's a dead end and decide to go back, but at this point you are compl
 
 
 <<<<<<< HEAD
+
+
 :: deadendCont {"position":"550,975","size":"100,100"}
 The branching paths have disappeared and only one direction remains. 
 [[Forward ->deadendLast]]
@@ -815,10 +789,8 @@ The note is gone...
 [[Backwards->Maze]]
 
 
-:: dieIndependant {"position":"4050,1500","size":"100,100"}
-=======
 :: dieIndependant {"position":"4000,1500","size":"100,100"}
->>>>>>> Seth
+
 Though you give it your all, sometimes that isnt enough. Bowser defense is unmatched. Jumping into the air, he slams down letting out a large shockwave knocking you down. Though you gave your best, this it was all for naught. 
 [[Try Again->RoyalChamber]]
 
@@ -842,16 +814,10 @@ You tell the guards: “I mistakenly wandered into the castle can you help me go
 :: init [startup] {"position":"800,600","size":"100,100"}
 (set: $willToEscape to false)
 (set: $hasKey to false)
-<<<<<<< HEAD
-=======
+
 (set: $hasNote to false)
 (set: $daisyHelp to false)
-(set: $defualtMaze to true)
-(set: $deadEnd to false)
-(set: $mazeAlt1 to false)
-(set: $mazeAlt2 to false)
-(set: $mazeTurn to 0)
->>>>>>> Seth
+
 
 (set: $secretPassage to "closed")
 
