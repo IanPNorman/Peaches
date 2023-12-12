@@ -177,9 +177,7 @@ You look out the window and, there is a large drop to the castle floor, leading 
 ]
 
 
-
 :: \ Window2 {"position":"1450,725","size":"100,100"}
-
 (if: $hasARope)[
 [[You tie your rope to the nearby desk and descend to the window below ->WindowBelow]]
 ]
@@ -243,7 +241,6 @@ Bowser just wants to be loved
 ]
 
 
-
 :: Bed {"position":"1000,550","size":"100,100"}
 You do not find anything under the bed.
 But perhaps you could make a rope from your bedsheets.
@@ -261,7 +258,7 @@ You get into a boo outfit. You leave the room, but there is a guard there! The g
 <<<<<<< HEAD
 
 
-:: Bookshelf {"position":"1200,925","size":"100,100"}
+:: Bookshelf {"position":"1200,900","size":"100,100"}
 Looking at the bookshelf, the books all look uninteresting
 (link-replace:"Book",(t8n:"dissolve"))[ It is a book, written by someone, about something... ]
 (link-replace:"Book",(t8n:"dissolve"))[ Book... by somone... it doesn't matter]
@@ -347,8 +344,6 @@ As you approach the end of the hallway there is a door. You notice two torches o
 
 [[Look at the left torch and lever.  ->LeftTorch]]
 [[Look at the Right torch and lever.  ->RightTorch]]
-
-
 
 
 :: Distraction {"position":"4300,550","size":"100,100"}
@@ -576,7 +571,6 @@ The door seems liek its about to give way!
 ]
 
 
-
 :: Ideas {"position":"800,200","size":"100,100"}
 IDEAS: 
 Level 1:
@@ -611,7 +605,7 @@ Hopefully it will hold.
 
 
 
-:: Kamek {"position":"3400,600","size":"100,100"}
+:: Kamek {"position":"3400,400","size":"100,100"}
 Correct! The lever pulls and the courtyard gate opens.
 [[continue ->Level 5 New]]
 
@@ -836,18 +830,18 @@ Now that you are alone you must try to find your way out of this castle and quic
 [[It's probably a dead end, give up ->dead end]]
 
 
-:: Outer courtyard {"position":"3275,500","size":"100,100"}
+:: Outer courtyard {"position":"3200,600","size":"100,100"}
 You find your way around until you find the lever to get you into the outer courtyard. However, to use the lever you must solve this question. In order to unlock the lever the following question must be answered:
 
 Who is Bowser's Wizard? 
 
-[[Kameek ->Wrong]]
+[[Kameek ->WrongE]]
 [[Kamek ->Kamek]]
 [[Lumos ->Wrong]]
 [[Leemos ->Wrong]]
 
 
-:: Patrol Guard Outfit {"position":"2950,600","size":"100,100"}
+:: Patrol Guard Outfit {"position":"2950,900","size":"100,100"}
 You get into a patrol guard outfit. You leave the room, but there is a guard there! The patrol guard salutes and moves on. He thinks you are one of them.
 [[Talk to guard ->Speak to Guard]]
 [[Continue ->Outer courtyard]]
@@ -908,8 +902,6 @@ The right torch is unlit and the lever underneath it is facing down
 ]
 
 
-
-
 :: RoyalChamber {"position":"1300,400","size":"100,100"}
 You are standing in the Royal Chamber and you look around. 
 Looking around the room again you see
@@ -920,7 +912,6 @@ Looking around the room again you see
 [[Examine Bed ->Bed]]
 [[Examine Wardrobe-> Wardrobe]]
 [[Examine Desk-> Desk]]
-
 
 
 :: Run for it {"position":"2300,1100","size":"100,100"}
@@ -952,7 +943,11 @@ You start a conversation with the guard, making sure to alter your voice. He eve
 ]
 
 
-:: Throw Note {"position":"1400,900","size":"100,100"}
+:: TESTING {"position":"3200,100","size":"100,100"}
+Just a test to see if this works
+
+
+:: Throw Note {"position":"1325,900","size":"100,100"}
 You make a paper airplane and toss the note out the window, watching it fly away.
 (set: $hasNote to false)
 [[Turn away -> Window]]
@@ -973,9 +968,15 @@ In front of you is an empty bed room full of cobwebs. There isn't much in the ro
 ]
 
 
-:: Wrong {"position":"3125,625","size":"100,100"}
+:: Wrong {"position":"3000,400","size":"100,100"}
 Wrong!
 [[Try again ->Outer courtyard]]
+
+
+:: WrongE {"position":"3200,400","size":"100,100"}
+"That is my name, but you added an extra E. You wouldn't call yourself Peeach, would you? Thats just disrespectful..."
+
+[[try again->Outer courtyard]] 
 
 
 :: You win {"position":"4050,1800","size":"100,100"}
@@ -1055,7 +1056,6 @@ The note is gone...
 
 
 :: dieIndependant {"position":"3975,1450","size":"100,100"}
-
 Though you give it your all, sometimes that isnt enough. Bowser defense is unmatched. Jumping into the air, he slams down letting out a large shockwave knocking you unconcious. Though you gave your best, this it was all for naught. 
 (link: "Return to Royal Chamber")[
    (set: $bowserLoss to true)
