@@ -8,7 +8,7 @@ Peaches
   "format": "Harlowe",
   "format-version": "3.3.7",
   "start": "Level 1",
-  "zoom": 0.6
+  "zoom": 0.3
 }
 
 
@@ -283,7 +283,6 @@ Looking at the bookshelf, the books all look uninteresting
 (link-replace:"Book",(t8n:"dissolve"))[Well, you must really like books.]
 
 
-
 :: Break Character {"position":"2900,1100","size":"100,100"}
 The guard realizes you are an imposter, quickly apprehends you and takes you back to the Royal Chamber.
 [[Back to chamber ->RoyalChamber]]
@@ -311,8 +310,7 @@ Both torches in the hallway are now lit.
     ]
 
 
-
-:: Captured {"position":"1700,1100","size":"100,100"}
+:: Captured {"position":"1875,925","size":"100,100"}
 The guards see you, and you are taken down immediately. They lock you back up in the royal chamber. However, they forget to take the key. What did you learn?
 [[Back to chamber ->RoyalChamber]]
 
@@ -461,12 +459,13 @@ You find a mysterious pipe in a mysterious room, with cracked bricks behind it.
 
 
 :: Emergency Exit {"position":"4400,800","size":"100,100"}
-The Emergency Exit works, and you are able to escape!
-[[You Win! ->You win]]
+As if the emergency exit would work so easily... A trap door opens up beneath you and you fall. 
+[[uh oh ->MazeIntro]]
 
 
-:: Escape {"position":"925,1500","size":"100,100"}
-You have successfully escaped the maze
+:: Escape {"position":"4550,1675","size":"100,100"}
+Though a hassle, it seems like your efforts have paid off as the emergency exit was in fact an exit... You escaped
+[[Yippee ->You win]] 
 
 
 :: Fall Death {"position":"1400,650","size":"100,100"}
@@ -477,7 +476,7 @@ You jump and fall 5 stories to your immediate death on the cobblestone floor.
 ]
 
 
-:: FalseDeadend {"position":"1000,1125","size":"100,100"}
+:: FalseDeadend {"position":"4600,1225","size":"100,100"}
 The path was in fact, not a dead end...
 Ahead you see a gate 
 [[Forward ->Gate]]
@@ -506,7 +505,7 @@ As you keep going, the nausea only gets stronger, and the corridor is now pitch 
 ]
 
 
-:: Gate {"position":"1000,1250","size":"100,100"}
+:: Gate {"position":"4625,1350","size":"100,100"}
 You push on the gate, but it does not open. You notice a slot for a key. Without the maze key you cannot escape from here. 
 (if: $mazeKey is true)[ 
 [[Try key you found in the maze ->Escape]]]
@@ -535,7 +534,6 @@ The guard comes in for a takeout! Guess which side to dodge to:
 [[Right swing->miss]]
 
 
-
 :: Guard Patrool Encounter {"position":"2200,850","size":"100,100"}
 Across the hall you see the dressing room, which looks unoccupied. What will you do next?
 [[Make a run for it->Make a run for it]]
@@ -550,6 +548,14 @@ As you quit observe the guards, they seem to leave a gap of a few seconds that y
 
 
 <<<<<<< HEAD
+
+
+:: GuardCharge {"position":"3200,800","size":"100,100"}
+The guard charges in, you read it like the last time you got hit and counter the attack with a swift side-kick in the stoamch. The guard is completely knocked out...
+
+[[Continue to Courtyard->Outer courtyard]]
+
+
 :: HallwayRoom {"position":"1950,1100","size":"100,100"}
 You enter a small dimly lit room. Looking around it appears to be an old abandoned study. From the light coming in from the window manage to see a few things 
 [[A small desk->Desk]]
@@ -557,13 +563,6 @@ You enter a small dimly lit room. Looking around it appears to be an old abandon
 [[A fancy bookshelf ->Bookshelf]] 
 [[An empty bookshelf ->SecretPassage]]
 [[A window -> Window3]]
-
-
-:: GuardCharge {"position":"3100,800","size":"100,100"}
-The guard charges in, you read it like the last time you got hit and counter the attack with a swift side-kick in the stoamch. The guard is completely knocked out...
-
-[[Continue to Courtyard->Outer courtyard]] 
-
 
 
 :: Hat {"position":"1150,750","size":"100,100"}
@@ -611,6 +610,7 @@ The door seems liek its about to give way!
 
 <<<<<<< HEAD
 
+
 :: HopWallFail {"position":"1900,100","size":"100,100"}
 In your attempt to jump the wall and not take Kamek's challenge you were captured and brought back to the Royal Chamber
 
@@ -652,8 +652,7 @@ Hopefully it will hold.
 "How DARE you double insult me? I give you a challenge and choices and this is how you repay me?"
 
 ...you have been sent back to the Royal Chamber
-[[click of shame->RoyalChamber]] 
-
+[[click of shame->RoyalChamber]]
 
 
 :: Inventory {"position":"800,400","size":"100,100"}
@@ -738,7 +737,7 @@ As you open the door your eyes adjust to the darkness laid before you. There is 
 [[Continue down the hallway.  ->DimHallway]]
 
 
-:: Make a run for it {"position":"1700,1000","size":"100,100"}
+:: Make a run for it {"position":"1875,825","size":"100,100"}
 You have no patience and decide to make a run for it.
 [[Continue ->Captured]]
 
@@ -751,7 +750,7 @@ You leave and go Mario's home with him. You have escaped, but you are still not 
 ]
 
 
-:: Maze {"position":"875,975","size":"100,100"}
+:: Maze {"position":"4525,1100","size":"100,100"}
 (set: $mazeTurn to $mazeTurn + 1)
 (set: $mazeType to (random: 1,5))
 You have made your $mazeTurn sth decision
@@ -801,13 +800,13 @@ You must keep going
 ]
 
 
-:: MazeExit {"position":"850,1375","size":"100,100"}
+:: MazeExit {"position":"4475,1500","size":"100,100"}
 The branching paths have disappeared and only one direction remains. But the wind grows stronger as you move forward
 [[Forward ->Escape]]
 [[Backward ->MazeGood1Cont]]
 
 
-:: MazeGood1 {"position":"850,1125","size":"100,100"}
+:: MazeGood1 {"position":"4450,1225","size":"100,100"}
 (set: $mazeTurn to $mazeTurn + 1)
 You have made your $mazeTurn sth decision
 But this time you see something new
@@ -818,7 +817,7 @@ But this time you see something new
 (set: $mazeTurn to $mazeTurn +1 )
 
 
-:: MazeGood1Cont {"position":"850,1250","size":"100,100"}
+:: MazeGood1Cont {"position":"4475,1350","size":"100,100"}
 [[Left ->Maze]]
 [[Forward ->MazeExit]] - you feel a faint wind coming from this direction
 (link-replace:"Right",(t8n:"dissolve"))[ You must be stupid, I SAID ]- there is a a patch of lava
@@ -826,7 +825,7 @@ But this time you see something new
 (set: $mazeTurn to $mazeTurn + 1)
 
 
-:: MazeIntro {"position":"875,825","size":"100,100"}
+:: MazeIntro {"position":"4525,950","size":"100,100"}
 (set: $mazeTurn to 0)
 (set: $deadEnds to 0)
 (set: $previous to "none")
@@ -896,11 +895,7 @@ In order to leave this castle you must challenge me and my five lore questions! 
 
 Do you accept the challenge?
 [[Yes, let's go->Question1]]
-[[Attempt to hop the wall instead->HopWallFail]] 
-
-
-
-
+[[Attempt to hop the wall instead->HopWallFail]]
 
 
 :: Patrol Guard Outfit {"position":"2950,900","size":"100,100"}
@@ -929,7 +924,7 @@ Who is Bowser's Wizard?"
 [[Leemos ->Wrong]]
 
 
-:: Question2 {"position":"3300,600","size":"100,100"}
+:: Question2 {"position":"3200,600","size":"100,100"}
 Kamek: "Yes, yes! My name is Kamek, well done. 
 
 Question 2:
@@ -941,7 +936,7 @@ What is Princess Peach's primary role in the Mushroom Kingdom?"
 [[Captain of the Mushroom Guard->Wrong2]]
 
 
-:: Question3 {"position":"3500,600","size":"100,100"}
+:: Question3 {"position":"3300,600","size":"100,100"}
 Kamek: "Good, good. I would hope you know your own job title...
 
 Question 3:
@@ -953,7 +948,7 @@ Which object is Mario famous for using to rescue Princess Peach from various thr
 [[Super Mushroom->Question4]]
 
 
-:: Question4 {"position":"3700,600","size":"100,100"}
+:: Question4 {"position":"3400,600","size":"100,100"}
 Kamek: "The super mushroom *Kamek says angrily as if they've had bad experience with the super mushroom*...
 
 Question 4:
@@ -963,7 +958,7 @@ True/False: Princess Peach's first appearance was in the game "Super Mario Bros.
 [[False ->Wrong4]]
 
 
-:: Question5 {"position":"3900,600","size":"100,100"}
+:: Question5 {"position":"3500,600","size":"100,100"}
 Kamek: "Correct! The lever pulls and the courtyard gate opens... you are free to go by the law of Kamek"
 
 [[continue ->Level 5 New]]
@@ -1087,30 +1082,30 @@ In front of you is an empty bed room full of cobwebs. There isn't much in the ro
 ]
 
 
-:: Wrong {"position":"3000,400","size":"100,100"}
+:: Wrong {"position":"3025,425","size":"100,100"}
 Wrong!
 [[Try again ->Outer courtyard]]
 
 
-:: Wrong2 {"position":"3300,400","size":"100,100"}
+:: Wrong2 {"position":"3275,450","size":"100,100"}
 "Wrong, how do you even get a question wrong about yourself?"
 
-[[try again->Question2]] 
+[[try again->Question2]]
 
 
-:: Wrong3 {"position":"3500,400","size":"100,100"}
+:: Wrong3 {"position":"3400,450","size":"100,100"}
 "No not quite. You're lucky I'm a man of my word and I respect the challenge..."
 
-[[try again->Question3]] 
+[[try again->Question3]]
 
 
-:: Wrong4 {"position":"3700,400","size":"100,100"}
+:: Wrong4 {"position":"3550,450","size":"100,100"}
 "There is no way you got the question wrong about Peach lore... you ARE Peach"
 
 [[try again->Question5]]
 
 
-:: WrongE {"position":"3100,400","size":"100,100"}
+:: WrongE {"position":"3150,450","size":"100,100"}
 "That is my name, but you added an extra E. You wouldn't call yourself Peeach, would you? That's just disrespectful..."
 
 [[try again->Question1]] 
@@ -1120,7 +1115,6 @@ Wrong!
 Don't you dare insult me a third time...
 [[Insult them a third time->insulted]]
 ]
-
 
 
 :: You win {"position":"4050,1800","size":"100,100"}
@@ -1134,7 +1128,7 @@ You win! Freedom at last!
 :: backToChamber {"position":"1900,500","size":"100,100"}
 You went in for another Right Swing. The guard did not let that slide twice. They knock you out and take you back to the Royal Chamber...
 
-[[continue->RoyalChamber]] 
+[[continue->RoyalChamber]]
 
 
 :: battle {"position":"4075,1050","size":"100,100"}
@@ -1152,7 +1146,7 @@ You think it's a dead end and decide to go back, but at this point you are compl
 ]
 
 
-:: deadendCont {"position":"550,975","size":"100,100"}
+:: deadendCont {"position":"4925,1125","size":"100,100"}
 The branching paths have disappeared and only one direction remains. 
 [[Forward ->deadendLast]]
 (if: $previous is "left")[
@@ -1164,7 +1158,7 @@ The branching paths have disappeared and only one direction remains.
 (set: $mazeBad to $mazebad + 1)
 
 
-:: deadendForward {"position":"725,875","size":"100,100"}
+:: deadendForward {"position":"4750,1125","size":"100,100"}
 (set: $mazeTurn to $mazeTurn + 1)
 You have made your $mazeTurn sth decision
 [[Left ->Maze]]
@@ -1174,7 +1168,7 @@ You have made your $mazeTurn sth decision
 (set: $previous to "forward")[
 
 
-:: deadendLast {"position":"400,975","size":"100,100"}
+:: deadendLast {"position":"5050,1125","size":"100,100"}
 You have reached a dead end, you must turn back
 (set: $deadEnds to $deadEnds + 1)
 [[Go Back ->deadendCont]]
@@ -1185,7 +1179,7 @@ But this time you notice there is chest
 (set: $mazeKey to true)]]
 
 
-:: deadendLeft {"position":"725,975","size":"100,100"}
+:: deadendLeft {"position":"4750,1025","size":"100,100"}
 (set: $mazeTurn to $mazeTurn + 1)
 You have made your $mazeTurn sth decision
 The arrow was a lie
@@ -1195,7 +1189,7 @@ The arrow was a lie
 [[Backwards->Maze]]
 
 
-:: deadendRight {"position":"725,1075","size":"100,100"}
+:: deadendRight {"position":"4750,1225","size":"100,100"}
 (set: $mazeTurn to $mazeTurn + 1)
 You have made your $mazeTurn sth decision
 The note is gone...
@@ -1238,7 +1232,6 @@ Looks like one more should do it and there are some shiny keys on the guard's be
 [[Stomp on the guard->hit2]]
 
 
-
 :: hit2 {"position":"3600,900","size":"100,100"}
 The guard doubles over dramatically, and Peach walks off with the keys from the guard's belt. 
 
@@ -1276,7 +1269,7 @@ The guard doubles over dramatically, and Peach walks off with the keys from the 
 :: insulted {"position":"3100,200","size":"100,100"}
 Kamek got really sad an got his boss (Bowser) to come and get you. You unfortunately lose.
 
-[[Back to the Royal Chamber->restartLoss]] 
+[[Back to the Royal Chamber->restartLoss]]
 
 
 :: miss {"position":"3400,800","size":"100,100"}
