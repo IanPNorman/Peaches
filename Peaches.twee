@@ -8,7 +8,7 @@ Peaches
   "format": "Harlowe",
   "format-version": "3.3.7",
   "start": "Level 1",
-  "zoom": 0.3
+  "zoom": 1
 }
 
 
@@ -22,7 +22,7 @@ You kick through the bricks, finding a room with a chest behind them. Within the
 The Paratrooper questions nothing, and immediately flies off with the note. You thank the other guard, and continue to the exit, with no one expecting a thing.
 (set: $hasNote to false)
 (set: $daisyHelp to true)
-[[Continue to gate->Level 5 New]]
+[[Continue to courtyard->Outer courtyard]]
 [[Continue to dungeon->Dungeon]]
 
 
@@ -118,8 +118,6 @@ You find a group of toads trapped in dungeon cells.
 [[Leave cells behind -> Dungeon Room 1 Left]]
 
 
->>>>>>> Seth
-
 
 :: \ Lair {"position":"4200,450","size":"100,100"}
 You stand in Bowser's Lair, heart pounding. Bowser is standing in front of you, and you need to act fast. What should you do?
@@ -131,7 +129,7 @@ You stand in Bowser's Lair, heart pounding. Bowser is standing in front of you, 
 :: \ No Help {"position":"2925,1200","size":"100,100"}
 The Paratrooper questions nothing, and immediately flies off with the note. You thank the other guard, and continue to the exit, with no one expecting a thing.
 (set: $hasNote to false)
-[[Continue to gate->Level 5 New]]
+[[Continue to courtyard->Outer courtyard]]
 [[Continue to dungeon->Dungeon]]
 
 
@@ -433,7 +431,7 @@ You enter the dungeon beneath Bowser's castle. It is dark and full of treacherou
 
 
 :: Dungeon Room 2 {"position":"2650,1700","size":"100,100"}
-(if: $holdingTorch is  true)[
+(if: $holdingTorch is true)[
     (set: $holdingTorch to false)
     The water immediately extinguishes the torch, plunging you into darkness.
 ]
@@ -442,7 +440,7 @@ You enter the dungeon beneath Bowser's castle. It is dark and full of treacherou
     (set: $room2Marked to true)
     You mark the way out immediately.
 ]
-(if: $room2Marked)[
+(if: $room2Marked is true)[
     The exit is marked to the North.
 ]
 
@@ -547,22 +545,21 @@ As you quit observe the guards, they seem to leave a gap of a few seconds that y
 [[Cause distraction ->distraction]]
 
 
-<<<<<<< HEAD
-
-
 :: GuardCharge {"position":"3200,800","size":"100,100"}
 The guard charges in, you read it like the last time you got hit and counter the attack with a swift side-kick in the stoamch. The guard is completely knocked out...
 
 [[Continue to Courtyard->Outer courtyard]]
 
 
-:: HallwayRoom {"position":"1950,1100","size":"100,100"}
+:: HallwayRoom {"position":"1925,1100","size":"100,100"}
 You enter a small dimly lit room. Looking around it appears to be an old abandoned study. From the light coming in from the window manage to see a few things 
 [[A small desk->Desk]]
 (link-reveal:"A spider web ",(t8n:"dissolve"))[with a spider]
 [[A fancy bookshelf ->Bookshelf]] 
 [[An empty bookshelf ->SecretPassage]]
 [[A window -> Window3]]
+
+[[Leave room->Hiding in Shadows]]
 
 
 :: Hat {"position":"1150,750","size":"100,100"}
@@ -575,7 +572,7 @@ You enter the hidden corridor, which you can barely crawl through and has no lig
 [[Continue ->Corridor]]
 
 
-:: Hiding in Shadows {"position":"2050,1000","size":"100,100"}
+:: Hiding in Shadows {"position":"2025,1000","size":"100,100"}
 You quietly slip into the shadows near a tapestry. Behind the tapestry you find a hidden door. 
 [[Hide in the room->HallwayRoom]]
 [[Wait for guard to pass->wait]]
