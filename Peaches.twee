@@ -311,7 +311,7 @@ The guards see you, and you are taken down immediately. They lock you back up in
 
 
 :: Caslte {"position":"2750,900","size":"100,100"}
-The guards originally for your trick and helped escort you, however a loud alarm went off in the castle saying that princess peach had disappeared. All the patrol guards were ordered to find her, allowing you as Dry Bones to be by yourself.
+The guards originally fall for your trick and helped escort you, however a loud alarm went off in the castle saying that princess peach had disappeared. All the patrol guards were ordered to find her, allowing you as Dry Bones to be by yourself.
 [[Continue ->Other Level 5]]
 
 
@@ -449,8 +449,8 @@ You find a mysterious pipe in a mysterious room, with cracked bricks behind it.
 
 
 :: Emergency Exit {"position":"4400,800","size":"100,100"}
-The Emergency Exit works, and you are escape!
-[[The end ->You win]]
+The Emergency Exit works, and you are able to escape!
+[[You Win! ->You win]]
 
 
 :: Escape {"position":"925,1500","size":"100,100"}
@@ -515,6 +515,15 @@ Perhaps you can make a rope out of these Gowns.
 [[Keep looking in the Wardrobe -> Wardrobe]]
 
 
+:: Guard Fight {"position":"3200,900","size":"100,100"}
+You lean in to fight! Peach doesn't normally use voilence as a Princess, but she's willing to do whatever she needs to leave! Even so, being the cool Princess she is, no fighting experience leads to chance!.
+
+The guard comes in for a takeout! Guess which side to dodge to:
+[[Left jab->hit]]
+[[Right swing->miss]]
+
+
+
 :: Guard Patrool Encounter {"position":"2200,850","size":"100,100"}
 Across the hall you see the dressing room, which looks unoccupied. What will you do next?
 [[Make a run for it->Make a run for it]]
@@ -526,6 +535,12 @@ Across the hall you see the dressing room, which looks unoccupied. What will you
 As you quit observe the guards, they seem to leave a gap of a few seconds that you could use to quickly run through. On the other hand, you could create some sort of distraction.
 [[Run for it ->Run for it]]
 [[Cause distraction ->distraction]]
+
+
+:: GuardCharge {"position":"3100,800","size":"100,100"}
+The guard charges in, you read it like the last time you got hit and counter the attack with a swift side-kick in the stoamch. The guard is completely knocked out...
+
+[[Continue to Courtyard->Outer courtyard]] 
 
 
 :: Hat {"position":"1150,750","size":"100,100"}
@@ -843,7 +858,7 @@ Now that you are alone you must try to find your way out of this castle and quic
 :: Outer courtyard {"position":"3000,600","size":"100,100"}
 You find your way around until you find the lever to get you into the outer courtyard. However, standing in your way is a concerning looking Koopa. They look in your direction and you make long eye contact before they say: "I am the Great Wizard of Bowser and Keeper of the Outer Gate!
 
-In order to leave this castle you must challenge me and my five lore questions!"
+In order to leave this castle you must challenge me and my five lore questions! Welcome to Wizard Riddles!
 
 Do you accept the challenge?
 [[Yes, let's go->Question1]]
@@ -857,6 +872,7 @@ Do you accept the challenge?
 :: Patrol Guard Outfit {"position":"2950,900","size":"100,100"}
 You get into a patrol guard outfit. You leave the room, but there is a guard there! The patrol guard salutes and moves on. He thinks you are one of them.
 [[Talk to guard ->Speak to Guard]]
+[[Fight Guard->Guard Fight]]
 [[Continue ->Outer courtyard]]
 
 
@@ -1074,6 +1090,12 @@ You win! Freedom at last!
 ]
 
 
+:: backToChamber {"position":"1900,500","size":"100,100"}
+You went in for another Right Swing. The guard did not let that slide twice. They knock you out and take you back to the Royal Chamber...
+
+[[continue->RoyalChamber]] 
+
+
 :: battle {"position":"4075,1050","size":"100,100"}
 This is your only chance of escape. You must fend off bowsers attacks and escape on your own.
 Take the initiative and [[strike first->AttackBowser]]
@@ -1166,6 +1188,22 @@ You tell the guards: “I mistakenly wandered into the castle can you help me go
 [[Continue ->Caslte]]
 
 
+:: hit {"position":"3400,900","size":"100,100"}
+Success! With a swift hit and the adrenaline from you puts pressure on the guard. 
+
+Looks like one more should do it and there are some shiny keys on the guard's belt, 
+
+[[Follow the left jab with a right hook->hit2]]
+[[Stomp on the guard->hit2]]
+
+
+
+:: hit2 {"position":"3600,900","size":"100,100"}
+The guard doubles over dramatically, and Peach walks off with the keys from the guard's belt. 
+
+[[Open Outer Courtyard Gate->Level 5 New]]
+
+
 :: init [startup] {"position":"800,600","size":"100,100"}
 (set: $willToEscape to false)
 (set: $hasKey to false)
@@ -1197,6 +1235,15 @@ You tell the guards: “I mistakenly wandered into the castle can you help me go
 Kamek got really sad an got his boss (Bowser) to come and get you. You unfortunately lose.
 
 [[Back to the Royal Chamber->restartLoss]] 
+
+
+:: miss {"position":"3400,800","size":"100,100"}
+Oh no! You guessed which side wrong, and the right swing took too long. 
+
+Good news is, you're still standing. The guard stares you down, ready for action.
+
+[[Stand Defensively in Fighting Pose->GuardCharge]]
+[[Go for another Right Swing->backToChamber]]
 
 
 :: nonchalant {"position":"4025,550","size":"100,100"}
