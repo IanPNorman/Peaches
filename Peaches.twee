@@ -8,7 +8,7 @@ Peaches
   "format": "Harlowe",
   "format-version": "3.3.7",
   "start": "Level 1",
-  "zoom": 1
+  "zoom": 0.3
 }
 
 
@@ -748,7 +748,7 @@ You leave and go Mario's home with him. You have escaped, but you are still not 
 
 
 :: Maze {"position":"4525,1100","size":"100,100"}
-(set: $mazeTurn to $mazeTurn + 1)
+{(set: $mazeTurn to $mazeTurn + 1)
 (set: $mazeType to (random: 1,5))
 You have made your $mazeTurn sth decision
 (if: $mazeTurn > 14)[
@@ -762,39 +762,39 @@ You grow dreary of these endless halls
 (if: $mazeType is 1)[(set: $previous to "left")
 There is a an  (link-rerun:"engraving")[{
 (t8n:"zoom")+(t8n-time:0.4s)(dialog:"<--")}] on the wall.
-[[Left ->deadendCont]]
-[[Forward ->MazeGood1]]
-[[Right ->Maze]]
-[[Backwards->Maze]]]
+* [[Left ->deadendCont]]
+* [[Forward ->MazeGood1]]
+* [[Right ->Maze]]
+* [[Backwards->Maze]]]
 (if: $mazeType is 2)[(set: $previous to "right")
 There is a paper with a  (link-rerun:"note")[{
 (t8n:"zoom")+(t8n-time:0.4s)(dialog:"RIGHT")}] on the ground 
-[[Left ->Maze]]
-[[Forward ->Maze]]
-[[Right ->deadendCont]]
-[[Backwards->Maze]]]
+* [[Left ->Maze]]
+* [[Forward ->Maze]]
+* [[Right ->deadendCont]]
+* [[Backwards->Maze]]]
 (if: $mazeType is 3)[(set: $previous to "right")
 There is a paper with a (link-rerun:"note")[{
 (t8n:"zoom")+(t8n-time:0.4s)(dialog:"left :)")}] on the wall
-[[Left ->MazeGood1]]
-[[Forward ->Maze]]
-[[Right ->deadendCont]]
-[[Backwards->Maze]]]
+* [[Left ->MazeGood1]]
+* [[Forward ->Maze]]
+* [[Right ->deadendCont]]
+* [[Backwards->Maze]]]
 (if: $mazeType is 4)[(set: $previous to "forward")
 All of the paths look the same... 
-[[Left ->Maze]]
-[[Forward ->deadendCont]]
-[[Right ->MazeGood1]]
-[[Backwards->Maze]]]
+* [[Left ->Maze]]
+* [[Forward ->deadendCont]]
+* [[Right ->MazeGood1]]
+* [[Backwards->Maze]]]
 (if: $mazeType is 5)[(set: $previous to "none")
 You must keep going
-[[Left ->FalseDeadend]] The path has a (link-rerun:"sign")[{
+* [[Left ->FalseDeadend]] The path has a (link-rerun:"sign")[{
 (t8n:"zoom")+(t8n-time:0.4s)(dialog:"DEAD END AHEAD")}]
-[[Forward ->MazeGood1]]
-[[Right ->FalseDeadend]] The path has a (link-rerun:"sign")[{
+* [[Forward ->MazeGood1]]
+* [[Right ->FalseDeadend]] The path has a (link-rerun:"sign")[{
 (t8n:"zoom")+(t8n-time:0.4s)(dialog:"DEAD END AHEAD")}]
-[[Backwards->Maze]]]
-]
+* [[Backwards->Maze]]]
+]}
 
 
 :: MazeExit {"position":"4475,1500","size":"100,100"}
@@ -804,14 +804,14 @@ The branching paths have disappeared and only one direction remains. But the win
 
 
 :: MazeGood1 {"position":"4450,1225","size":"100,100"}
-(set: $mazeTurn to $mazeTurn + 1)
+{(set: $mazeTurn to $mazeTurn + 1)
 You have made your $mazeTurn sth decision
 But this time you see something new
-[[Left ->MazeGood1Cont]] - You see a faint glow in the distance
-[[Forward ->Maze]]
-[[Right ->Maze]]
-[[Backwards->Maze]]
-(set: $mazeTurn to $mazeTurn +1 )
+* [[Left ->MazeGood1Cont]] - You see a faint glow in the distance
+* [[Forward ->Maze]]
+* [[Right ->Maze]]
+* [[Backwards->Maze]]
+(set: $mazeTurn to $mazeTurn +1 )}
 
 
 :: MazeGood1Cont {"position":"4475,1350","size":"100,100"}
@@ -823,7 +823,7 @@ But this time you see something new
 
 
 :: MazeIntro {"position":"4525,950","size":"100,100"}
-(set: $mazeTurn to 0)
+{(set: $mazeTurn to 0)
 (set: $deadEnds to 0)
 (set: $previous to "none")
 (set: $mazeKey to false)
@@ -831,11 +831,11 @@ The floor below you dissappears and you fall for a brief moment. You sustain a s
 (link-replace:"Look around",(t8n:"dissolve"))[ 
 You look around and realize you must be in a maze.
 (link-replace:"continue",(t8n:"dissolve"))[ 4 paths lie in front of you, which way will you go
-[[Left ->Maze]]
-[[Forward ->Maze]]
-[[Right ->Maze]]
-[[Backwards->Maze]]
-]]
+* [[Left ->Maze]]
+* [[Forward ->Maze]]
+* [[Right ->Maze]]
+* [[Backwards->Maze]]
+]]}
 
 
 :: Mystery Land {"position":"2700,1900","size":"100,100"}
@@ -1156,13 +1156,13 @@ The branching paths have disappeared and only one direction remains.
 
 
 :: deadendForward {"position":"4750,1125","size":"100,100"}
-(set: $mazeTurn to $mazeTurn + 1)
+{(set: $mazeTurn to $mazeTurn + 1)
 You have made your $mazeTurn sth decision
-[[Left ->Maze]]
-[[Forward ->deadendCont]]
-[[Right ->Maze]]
-[[Backwards->Maze]]
-(set: $previous to "forward")[
+* [[Left ->Maze]]
+* [[Forward ->deadendCont]]
+* [[Right ->Maze]]
+* [[Backwards->Maze]]
+(set: $previous to "forward")}
 
 
 :: deadendLast {"position":"5050,1125","size":"100,100"}
@@ -1177,23 +1177,23 @@ But this time you notice there is chest
 
 
 :: deadendLeft {"position":"4750,1025","size":"100,100"}
-(set: $mazeTurn to $mazeTurn + 1)
+{(set: $mazeTurn to $mazeTurn + 1)
 You have made your $mazeTurn sth decision
 The arrow was a lie
-[[Left ->deadendCont]]
-[[Forward ->Maze]]
-[[Right ->Maze]]
-[[Backwards->Maze]]
+* [[Left ->deadendCont]]
+* [[Forward ->Maze]]
+* [[Right ->Maze]]
+* [[Backwards->Maze]]}
 
 
 :: deadendRight {"position":"4750,1225","size":"100,100"}
-(set: $mazeTurn to $mazeTurn + 1)
+{(set: $mazeTurn to $mazeTurn + 1)
 You have made your $mazeTurn sth decision
 The note is gone...
-[[Left ->Maze]]
-[[Forward ->Maze]]
-[[Right ->deadendCont]]
-[[Backwards->Maze]]
+* [[Left ->Maze]]
+* [[Forward ->Maze]]
+* [[Right ->deadendCont]]
+* [[Backwards->Maze]]}
 
 
 :: dieIndependant {"position":"3975,1450","size":"100,100"}
@@ -1236,7 +1236,7 @@ The guard doubles over dramatically, and Peach walks off with the keys from the 
 
 
 :: init [startup] {"position":"800,600","size":"100,100"}
-(set: $willToEscape to false)
+{(set: $willToEscape to false)
 (set: $hasKey to false)
 (set: $hasNote to false)
 (set: $daisyHelp to false)
@@ -1260,7 +1260,7 @@ The guard doubles over dramatically, and Peach walks off with the keys from the 
 
 (set: $doorHitCounter to 0)
 (set: $bowserLoss to false)
-(set: $secretPassage to "closed")
+(set: $secretPassage to "closed")}
 
 
 :: insulted {"position":"3100,200","size":"100,100"}
