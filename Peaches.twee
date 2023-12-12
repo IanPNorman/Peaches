@@ -18,7 +18,7 @@ You kick through the bricks, finding a room with a chest behind them. Within the
 [[Return to pipe room ->Dungeon Room Pipe]]
 
 
-:: \ Daisy Help {"position":"3075,1250","size":"100,100"}
+:: \ Daisy Help {"position":"3025,1200","size":"100,100"}
 The Paratrooper questions nothing, and immediately flies off with the note. You thank the other guard, and continue to the exit, with no one expecting a thing.
 (set: $hasNote to false)
 (set: $daisyHelp to true)
@@ -34,7 +34,7 @@ You look through all the desk drawers, finding nothing but suspiciously bright p
 [[Go back ->RoyalChamber]]
 
 
-:: \ Destroy Bowser {"position":"3850,1475","size":"100,100"}
+:: \ Destroy Bowser {"position":"3850,1450","size":"100,100"}
 After using the Super Star, Bowser stands no chance. He is destroyed immediately by your fury. In order to avoid meeting the same fate, his minions all swear to follow you, Queen Peach.
 [[Rule the world alone ->You win]]
 
@@ -86,17 +86,26 @@ After using the Super Star, Bowser stands no chance. He is destroyed immediately
 
 :: \ Dungeon Room Hole {"position":"2300,1700","size":"100,100"}
 You casually walk forward before plunging down into a pit. 
-[[Restart ->Level 1]]
+(link: "Restart")[
+   
+    (go-to: "Level 1")
+]
 
 
 :: \ Dungeon Room Spikes {"position":"2400,1700","size":"100,100"}
 You creep forward until spikes fall from the ceiling. The adventure is over very quickly.
-[[Restart ->Level 1]]
+(link: "Restart")[
+   
+    (go-to: "Level 1")
+]
 
 
 :: \ Dungeon Room Thwomp {"position":"2750,1700","size":"100,100"}
 You find a smiling Thwomp in the corridor. He is very happy to squish you.
-[[Restart ->Level 1]]
+(link: "Restart")[
+   
+    (go-to: "Level 1")
+]
 
 
 :: \ Dungeon Room Toad Passage {"position":"2150,1700","size":"100,100"}
@@ -119,11 +128,7 @@ You stand in Bowser's Lair, heart pounding. Bowser is standing in front of you, 
 [[Distraction ->Distraction]]
 
 
-<<<<<<< HEAD
-=======
-
-
-:: \ No Help {"position":"2950,1200","size":"100,100"}
+:: \ No Help {"position":"2925,1200","size":"100,100"}
 The Paratrooper questions nothing, and immediately flies off with the note. You thank the other guard, and continue to the exit, with no one expecting a thing.
 (set: $hasNote to false)
 [[Continue to gate->Level 5 New]]
@@ -136,14 +141,20 @@ Bowsers guards are very stupid, the cell opens, and the grateful toads flee.
 [[Continue -> Dungeon Room 1 Left]]
 
 
-:: \ Task {"position":"2550,900","size":"100,100"}
+:: \ Task {"position":"2650,900","size":"100,100"}
 The guards already know that Bowser would never accept tasks from a freelance Dry Bones. You are promptly thrown off the castle walls to your death.
-[[Restart ->Level 1]]
+(link: "Restart")[
+   
+    (go-to: "Level 1")
+]
 
 
 :: \ Trapdoor {"position":"4200,800","size":"100,100"}
 You jump through the trapdoor, thinking that it might be a secrect exit out of the castle, but you are unfortunately mistaken. You fall hundreds of feet into a fiery pit of lava, and die a hot, painful and glowing death.
-[[Restart ->Level 1]]
+(link: "Restart")[
+   
+    (go-to: "Level 1")
+]
 
 
 :: \ Wardrobe {"position":"1200,550","size":"100,100"}
@@ -176,7 +187,7 @@ You look out the window and, there is a large drop to the castle floor, leading 
 [[Perhaps you should go another way ->RoyalChamber]]
 
 
-:: AllOut {"position":"4050,1350","size":"100,100"}
+:: AllOut {"position":"3975,1300","size":"100,100"}
 You give it everything you have. After dodging several fireballs, Bowser is beginning to look winded. 
 (link-reveal:"Continue",(t8n:"dissolve"))
 [
@@ -215,14 +226,22 @@ As you approach the door with both torches having turned on you hear a clicking 
 ]
 
 
-:: AttackBowser {"position":"3950,1200","size":"100,100"}
+:: AttackBowser {"position":"3975,1175","size":"100,100"}
+(if: $bowserLoss is false)[
 You charge Bowser head on, dodging his slow fists, you strike at every oppurtunity
 (link-reveal:"Continue",(t8n:"dissolve"))
 [
 As the battle goes on you realize your hits have little effect. 
 [[Call for help->CallHelp]]
 [[Fight with all your might->AllOut]]
+]]
+(if: $bowserLoss is true)[
+You charge bowser head on, but he catches your fist... but he does not strike back???
+He just stares at you for a second before turning and opening the gate... he says "If you hate me that much you can just leave  :'( "
+Bowser just wants to be loved
+[[Too bad->You win]]
 ]
+
 
 
 :: Bed {"position":"1000,550","size":"100,100"}
@@ -276,7 +295,7 @@ Both torches in the hallway are now lit.
 [[Approach the Door.  ->ApproachDoor]]
 
 
-:: CallHelp {"position":"4300,1400","size":"100,100"}
+:: CallHelp {"position":"4100,1300","size":"100,100"}
 (if: $daisyHelp)[
     Daisy received the letter you sent to Sarasaland earlier and arrives in the nick of time.
     [[Continue fighting Bowser with Daisy's help ->DaisyWin]]
@@ -310,12 +329,12 @@ You decide not to let a little nausea slow you down, and even though the path fo
 [[Continue->Gas Death]]
 
 
-:: DaisyWin {"position":"4250,1500","size":"100,100"}
+:: DaisyWin {"position":"4100,1450","size":"100,100"}
 Daisy answers your call for help rushes over her, drifting into the courtyard in her kart. Though you have done your best until this point sometimes getting helps from friends during times of need, is necessary. With Daisys help, Bowser is defeated and you escape. 
 [[The End ->You win]]
 
 
-:: DefendYourself {"position":"4150,1200","size":"100,100"}
+:: DefendYourself {"position":"4150,1175","size":"100,100"}
 You prepare youself for whatever Bowser may throw at you. Unfortunately for you, he spits a fireball at you and you are badly hurt. 
 [[Call for help->CallHelp]]
 [[Fight to the end->dieIndependant]]
@@ -349,7 +368,7 @@ You decide a hidden corridor is too dangerous.
 [[Go back->Guard Patrool Encounter]]
 
 
-:: Door {"position":"1950,525","size":"100,100"}
+:: Door {"position":"1600,600","size":"100,100"}
 The door is locked.
 (if: $hasKey)[
   [[Open the door with the key->Level 2]]
@@ -365,7 +384,7 @@ What do you do?
 [[Flee the scene ->Flee the scene]]
 
 
-:: Dungeon {"position":"2500,1400","size":"100,100"}
+:: Dungeon {"position":"2500,1375","size":"100,100"}
 You enter the dungeon beneath Bowser's castle. It is dark and full of treacherous turns. You see a torch, compass, and marker, but you can only carry two. You grab the compass and pick between the torch and marker.
 
 (link: "Pickup the torch")[
@@ -443,9 +462,12 @@ The Emergency Exit works, and you are escape!
 You have successfully escaped the maze
 
 
-:: Fall Death {"position":"1550,550","size":"100,100"}
+:: Fall Death {"position":"1400,650","size":"100,100"}
 You jump and fall 5 stories to your immediate death on the cobblestone floor.
-[[Restart ->Level 1]]
+(link: "Restart")[
+   
+    (go-to: "Level 1")
+]
 
 
 :: FalseDeadend {"position":"1000,1125","size":"100,100"}
@@ -471,7 +493,10 @@ You try to run away, but the guards see you, quickly apprehend you and you are b
 
 :: Gas Death {"position":"1900,1400","size":"100,100"}
 As you keep going, the nausea only gets stronger, and the corridor is now pitch black. You eventually hit a dead end, but it is too late. You faint, only to never wake up.
-[[Restart ->Level 1]]
+(link: "Restart")[
+   
+    (go-to: "Level 1")
+]
 
 
 :: Gate {"position":"1000,1250","size":"100,100"}
@@ -586,7 +611,7 @@ Hopefully it will hold.
 
 
 
-:: Kamek {"position":"3050,800","size":"100,100"}
+:: Kamek {"position":"3400,600","size":"100,100"}
 Correct! The lever pulls and the courtyard gate opens.
 [[continue ->Level 5 New]]
 
@@ -629,7 +654,7 @@ This story starts with you, Princess Peach. You are once again trapped in Bowser
 [[Start ->RoyalChamber]]
 
 
-:: Level 2 {"position":"2150,750","size":"100,100"}
+:: Level 2 {"position":"2200,750","size":"100,100"}
 Congratulations! You unlocked the door. As the door clicks shut behind you, the sound of armored footsteps echoes through the halls. Guards roam with vigilance.
 [[Continue->Guard Patrool Encounter]]
 
@@ -653,7 +678,8 @@ The exit from bowsers castle lies in front of you
 [
 With the exit only a few breaths away, Bowser drops from the castle walls
 He is furious
-[[Run->run]]
+(if: $bowserLoss is false)[
+[[Run->run]]]
 [[Battle->battle]]
 ]
 
@@ -673,7 +699,7 @@ You have no patience and decide to make a run for it.
 [[Continue ->Captured]]
 
 
-:: MarioLose {"position":"4350,1500","size":"100,100"}
+:: MarioLose {"position":"4225,1450","size":"100,100"}
 You leave and are brought to you Mario's home. You have escaped, but you are still not free. The only thing that has changed is the bird cage which surrounds you. Who will rescue you now? Bowser?
 
 
@@ -782,19 +808,25 @@ You write a note, explaining how you got kidnapped again and asking for help.
 (set: $hasNote to true)[[Finish writing and seal envelope -> Desk]]
 
 
-:: Offer help {"position":"4100,550","size":"100,100"}
+:: Offer help {"position":"4175,550","size":"100,100"}
 You exclaim: “Don’t worry bowser! I’ll help find Princess Peach!"
 [[Continue ->Offer help2]]
 
 
-:: Offer help2 {"position":"4100,650","size":"100,100"}
+:: Offer help2 {"position":"4175,650","size":"100,100"}
 Unfortunately you fail to take into account that a Dry Bones is never nice or helpful, are your facade is easy to see through. Bowser promptly throws you off the castle walls to your death.
-[[Restart ->Level 1]]
+(link: "Restart")[
+   
+    (go-to: "Level 1")
+]
 
 
 :: Only look {"position":"3825,125","size":"100,100"}
 You give up after checking one door and decide to go back, but at this point you are completely lost. You wander in circles until you collapse and die of exhaustion.
-[[Restart ->Level 1]]
+(link: "Restart")[
+   
+    (go-to: "Level 1")
+]
 
 
 :: Other Level 5 {"position":"3775,25","size":"100,100"}
@@ -804,7 +836,7 @@ Now that you are alone you must try to find your way out of this castle and quic
 [[It's probably a dead end, give up ->dead end]]
 
 
-:: Outer courtyard {"position":"3000,700","size":"100,100"}
+:: Outer courtyard {"position":"3275,500","size":"100,100"}
 You find your way around until you find the lever to get you into the outer courtyard. However, to use the lever you must solve this question. In order to unlock the lever the following question must be answered:
 
 Who is Bowser's Wizard? 
@@ -920,7 +952,7 @@ You start a conversation with the guard, making sure to alter your voice. He eve
 ]
 
 
-:: Throw Note {"position":"1650,550","size":"100,100"}
+:: Throw Note {"position":"1400,900","size":"100,100"}
 You make a paper airplane and toss the note out the window, watching it fly away.
 (set: $hasNote to false)
 [[Turn away -> Window]]
@@ -941,28 +973,32 @@ In front of you is an empty bed room full of cobwebs. There isn't much in the ro
 ]
 
 
-:: Wrong {"position":"2950,800","size":"100,100"}
+:: Wrong {"position":"3125,625","size":"100,100"}
 Wrong!
 [[Try again ->Outer courtyard]]
 
 
 :: You win {"position":"4050,1800","size":"100,100"}
 You win! Freedom at last!
-[[Restart ->Level 1]]
+(link: "Restart")[
+   
+    (go-to: "Level 1")
+]
 
 
-:: battle {"position":"4050,1050","size":"100,100"}
+:: battle {"position":"4075,1050","size":"100,100"}
 This is your only chance of escape. You must fend off bowsers attacks and escape on your own.
 Take the initiative and [[strike first->AttackBowser]]
-[[Take a defensive stance->DefendYourself]] and prepare yourself
+(if: $bowserLoss is false)[
+[[Take a defensive stance->DefendYourself]] and prepare yourself]
 
 
 :: dead end {"position":"3725,125","size":"100,100"}
 You think it's a dead end and decide to go back, but at this point you are completely lost. You wander in circles until you collapse and die of exhaustion.
-[[Restart ->Level 1]]
-
-
-<<<<<<< HEAD
+(link: "Restart")[
+   
+    (go-to: "Level 1")
+]
 
 
 :: deadendCont {"position":"550,975","size":"100,100"}
@@ -1018,9 +1054,13 @@ The note is gone...
 [[Backwards->Maze]]
 
 
-:: dieIndependant {"position":"4000,1500","size":"100,100"}
-Though you give it your all, sometimes that isnt enough. Bowser defense is unmatched. Jumping into the air, he slams down letting out a large shockwave knocking you down. Though you gave your best, this it was all for naught. 
-[[Try Again->RoyalChamber]]
+:: dieIndependant {"position":"3975,1450","size":"100,100"}
+
+Though you give it your all, sometimes that isnt enough. Bowser defense is unmatched. Jumping into the air, he slams down letting out a large shockwave knocking you unconcious. Though you gave your best, this it was all for naught. 
+(link: "Return to Royal Chamber")[
+   (set: $bowserLoss to true)
+    (go-to: "RoyalChamber")
+]
 
 
 :: distraction {"position":"2400,1100","size":"100,100"}
@@ -1042,19 +1082,13 @@ You tell the guards: “I mistakenly wandered into the castle can you help me go
 :: init [startup] {"position":"800,600","size":"100,100"}
 (set: $willToEscape to false)
 (set: $hasKey to false)
-
 (set: $hasNote to false)
 (set: $daisyHelp to false)
-
-
 (set: $secretPassage to "closed")
-
-(set: $independenceScore to 0))
+(set: $independenceScore to 0)
 (set: $openedChest to false)
-
 (set: $holdingTorch to false)
 (set: $holdingMarker to false)
-
 (set: $room1Marked to false)
 (set: $room1LeftMarked to false)
 (set: $room1RightMarked to false)
@@ -1069,22 +1103,30 @@ You tell the guards: “I mistakenly wandered into the castle can you help me go
 (set: $rightTorch to false)
 
 (set: $doorHitCounter to 0)
+(set: $bowserLoss to false)
 
 
-:: nonchalant {"position":"3700,725","size":"100,100"}
+:: nonchalant {"position":"4025,550","size":"100,100"}
 You say, "Oh hey bowser, I was looking for you to ask if you needed more help to look for peaches"
 [[Continue ->nonchalant2]]
 
 
-:: nonchalant2 {"position":"3550,800","size":"100,100"}
+:: nonchalant2 {"position":"4025,650","size":"100,100"}
 Unfortunately you fail to take into account that a Dry Bones is never nice or helpful, are your facade is easy to see through. Bowser promptly throws you off the castle walls to your death.
-[[Restart ->Level 1]]
+(link: "Restart")[
+   
+    (go-to: "Level 1")
+]
 
 
-:: run {"position":"3850,1050","size":"100,100"}
+:: run {"position":"3825,1050","size":"100,100"}
 You attempt to run but are quickly surrounded by Bowsers gaurds. Cornered you are captured and returned to the [[Royal Chamber->RoyalChamber]]
+(set: $bowserLoss to true)
 
 
 :: turn back {"position":"4300,800","size":"100,100"}
 You decide both are too risky and try to turn back, but in a heat of the moment you trip and fall over the castle walls, ending your life in a splatter on the ground below,
-[[Restart ->Level 1]]
+(link: "Restart")[
+   
+    (go-to: "Level 1")
+]
