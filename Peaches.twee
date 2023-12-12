@@ -318,7 +318,7 @@ The guards see you, and you are taken down immediately. They lock you back up in
 
 
 :: Caslte {"position":"2750,900","size":"100,100"}
-The guards originally for your trick and helped escort you, however a loud alarm went off in the castle saying that princess peach had disappeared. All the patrol guards were ordered to find her, allowing you as Dry Bones to be by yourself.
+The guards originally fall for your trick and helped escort you, however a loud alarm went off in the castle saying that princess peach had disappeared. All the patrol guards were ordered to find her, allowing you as Dry Bones to be by yourself.
 [[Continue ->Other Level 5]]
 
 
@@ -461,8 +461,8 @@ You find a mysterious pipe in a mysterious room, with cracked bricks behind it.
 
 
 :: Emergency Exit {"position":"4400,800","size":"100,100"}
-The Emergency Exit works, and you are escape!
-[[The end ->You win]]
+The Emergency Exit works, and you are able to escape!
+[[You Win! ->You win]]
 
 
 :: Escape {"position":"925,1500","size":"100,100"}
@@ -527,6 +527,15 @@ Perhaps you can make a rope out of these Gowns.
 [[Keep looking in the Wardrobe -> Wardrobe]]
 
 
+:: Guard Fight {"position":"3200,900","size":"100,100"}
+You lean in to fight! Peach doesn't normally use voilence as a Princess, but she's willing to do whatever she needs to leave! Even so, being the cool Princess she is, no fighting experience leads to chance!.
+
+The guard comes in for a takeout! Guess which side to dodge to:
+[[Left jab->hit]]
+[[Right swing->miss]]
+
+
+
 :: Guard Patrool Encounter {"position":"2200,850","size":"100,100"}
 Across the hall you see the dressing room, which looks unoccupied. What will you do next?
 [[Make a run for it->Make a run for it]]
@@ -540,6 +549,7 @@ As you quit observe the guards, they seem to leave a gap of a few seconds that y
 [[Cause distraction ->distraction]]
 
 
+<<<<<<< HEAD
 :: HallwayRoom {"position":"1950,1100","size":"100,100"}
 You enter a small dimly lit room. Looking around it appears to be an old abandoned study. From the light coming in from the window manage to see a few things 
 [[A small desk->Desk]]
@@ -547,6 +557,12 @@ You enter a small dimly lit room. Looking around it appears to be an old abandon
 [[A fancy bookshelf ->Bookshelf]] 
 [[An empty bookshelf ->SecretPassage]]
 [[A window -> Window3]]
+
+
+:: GuardCharge {"position":"3100,800","size":"100,100"}
+The guard charges in, you read it like the last time you got hit and counter the attack with a swift side-kick in the stoamch. The guard is completely knocked out...
+
+[[Continue to Courtyard->Outer courtyard]] 
 
 
 
@@ -593,6 +609,14 @@ The door seems liek its about to give way!
 ]
 
 
+<<<<<<< HEAD
+
+:: HopWallFail {"position":"1900,100","size":"100,100"}
+In your attempt to jump the wall and not take Kamek's challenge you were captured and brought back to the Royal Chamber
+
+[[Just accept the challenge next time->RoyalChamber]]
+
+
 :: Ideas {"position":"800,200","size":"100,100"}
 IDEAS: 
 Level 1:
@@ -623,13 +647,17 @@ Hopefully it will hold.
 [[Go back to the middle of the room ->RoyalChamber]]
 
 
+:: InsultedKamek {"position":"1900,200","size":"100,100"}
+(set: $insultedKamek to true)
+"How DARE you double insult me? I give you a challenge and choices and this is how you repay me?"
+
+...you have been sent back to the Royal Chamber
+[[click of shame->RoyalChamber]] 
+
+
+
 :: Inventory {"position":"800,400","size":"100,100"}
 
-
-
-:: Kamek {"position":"3400,600","size":"100,100"}
-Correct! The lever pulls and the courtyard gate opens.
-[[continue ->Level 5 New]]
 
 
 :: Key {"position":"1250,750","size":"100,100"}
@@ -861,20 +889,24 @@ Now that you are alone you must try to find your way out of this castle and quic
 [[It's probably a dead end, give up ->dead end]]
 
 
-:: Outer courtyard {"position":"3275,500","size":"100,100"}
-You find your way around until you find the lever to get you into the outer courtyard. However, to use the lever you must solve this question. In order to unlock the lever the following question must be answered:
+:: Outer courtyard {"position":"3000,600","size":"100,100"}
+You find your way around until you find the lever to get you into the outer courtyard. However, standing in your way is a concerning looking Koopa. They look in your direction and you make long eye contact before they say: "I am the Great Wizard of Bowser and Keeper of the Outer Gate!
 
-Who is Bowser's Wizard? 
+In order to leave this castle you must challenge me and my five lore questions! Welcome to Wizard Riddles!
 
-[[Kameek ->Wrong]]
-[[Kamek ->Kamek]]
-[[Lumos ->Wrong]]
-[[Leemos ->Wrong]]
+Do you accept the challenge?
+[[Yes, let's go->Question1]]
+[[Attempt to hop the wall instead->HopWallFail]] 
 
 
-:: Patrol Guard Outfit {"position":"2950,600","size":"100,100"}
+
+
+
+
+:: Patrol Guard Outfit {"position":"2950,900","size":"100,100"}
 You get into a patrol guard outfit. You leave the room, but there is a guard there! The patrol guard salutes and moves on. He thinks you are one of them.
 [[Talk to guard ->Speak to Guard]]
+[[Fight Guard->Guard Fight]]
 [[Continue ->Outer courtyard]]
 
 
@@ -882,6 +914,59 @@ You get into a patrol guard outfit. You leave the room, but there is a guard the
 You get in your iconic peach dress and leave the dressing room. However, a patrol guard sees you and calls over the other guards. You are surrounded. They lock you back up in the royal chamber. However, they forget to take the key. What did you learn?
 (set: $independenceScore to it - 1)
 [[Back to chamber ->RoyalChamber]]
+
+
+:: Question1 {"position":"3100,600","size":"100,100"}
+You challenge the confusing Wizard.
+"Great, you made the right choice. 
+
+First question:
+Who is Bowser's Wizard?"
+
+[[Kameek ->WrongE]]
+[[Kamek ->Question2]]
+[[Lumos ->Wrong]]
+[[Leemos ->Wrong]]
+
+
+:: Question2 {"position":"3300,600","size":"100,100"}
+Kamek: "Yes, yes! My name is Kamek, well done. 
+
+Question 2:
+What is Princess Peach's primary role in the Mushroom Kingdom?"
+
+[[Toadstool Historian->Wrong2]]
+[[ Royal Chef->Wrong2]]
+[[Monarch of the Mushroom Kingdom->Question3]]
+[[Captain of the Mushroom Guard->Wrong2]]
+
+
+:: Question3 {"position":"3500,600","size":"100,100"}
+Kamek: "Good, good. I would hope you know your own job title...
+
+Question 3:
+Which object is Mario famous for using to rescue Princess Peach from various threats that also makes him bigger occationally?
+
+[[Star Wand->Wrong3]]
+[[Fire Flower->Wrong3]]
+[[Power Glove->Wrong3]]
+[[Super Mushroom->Question4]]
+
+
+:: Question4 {"position":"3700,600","size":"100,100"}
+Kamek: "The super mushroom *Kamek says angrily as if they've had bad experience with the super mushroom*...
+
+Question 4:
+True/False: Princess Peach's first appearance was in the game "Super Mario Bros." released in 1985."
+
+[[True ->Question5]]
+[[False ->Wrong4]]
+
+
+:: Question5 {"position":"3900,600","size":"100,100"}
+Kamek: "Correct! The lever pulls and the courtyard gate opens... you are free to go by the law of Kamek"
+
+[[continue ->Level 5 New]]
 
 
 :: ReturnDim {"position":"1450,1200","size":"100,100"}
@@ -981,7 +1066,7 @@ You start a conversation with the guard, making sure to alter your voice. He eve
 ]
 
 
-:: Throw Note {"position":"1400,900","size":"100,100"}
+:: Throw Note {"position":"1325,900","size":"100,100"}
 You make a paper airplane and toss the note out the window, watching it fly away.
 (set: $hasNote to false)
 [[Turn away -> Window]]
@@ -1002,9 +1087,40 @@ In front of you is an empty bed room full of cobwebs. There isn't much in the ro
 ]
 
 
-:: Wrong {"position":"3125,625","size":"100,100"}
+:: Wrong {"position":"3000,400","size":"100,100"}
 Wrong!
 [[Try again ->Outer courtyard]]
+
+
+:: Wrong2 {"position":"3300,400","size":"100,100"}
+"Wrong, how do you even get a question wrong about yourself?"
+
+[[try again->Question2]] 
+
+
+:: Wrong3 {"position":"3500,400","size":"100,100"}
+"No not quite. You're lucky I'm a man of my word and I respect the challenge..."
+
+[[try again->Question3]] 
+
+
+:: Wrong4 {"position":"3700,400","size":"100,100"}
+"There is no way you got the question wrong about Peach lore... you ARE Peach"
+
+[[try again->Question5]]
+
+
+:: WrongE {"position":"3100,400","size":"100,100"}
+"That is my name, but you added an extra E. You wouldn't call yourself Peeach, would you? That's just disrespectful..."
+
+[[try again->Question1]] 
+[[Insult them more->InsultedKamek]] 
+
+(if: $insultedKamek is true)[
+Don't you dare insult me a third time...
+[[Insult them a third time->insulted]]
+]
+
 
 
 :: You win {"position":"4050,1800","size":"100,100"}
@@ -1013,6 +1129,12 @@ You win! Freedom at last!
    
     (go-to: "Level 1")
 ]
+
+
+:: backToChamber {"position":"1900,500","size":"100,100"}
+You went in for another Right Swing. The guard did not let that slide twice. They knock you out and take you back to the Royal Chamber...
+
+[[continue->RoyalChamber]] 
 
 
 :: battle {"position":"4075,1050","size":"100,100"}
@@ -1107,6 +1229,22 @@ You tell the guards: “I mistakenly wandered into the castle can you help me go
 [[Continue ->Caslte]]
 
 
+:: hit {"position":"3400,900","size":"100,100"}
+Success! With a swift hit and the adrenaline from you puts pressure on the guard. 
+
+Looks like one more should do it and there are some shiny keys on the guard's belt, 
+
+[[Follow the left jab with a right hook->hit2]]
+[[Stomp on the guard->hit2]]
+
+
+
+:: hit2 {"position":"3600,900","size":"100,100"}
+The guard doubles over dramatically, and Peach walks off with the keys from the guard's belt. 
+
+[[Open Outer Courtyard Gate->Level 5 New]]
+
+
 :: init [startup] {"position":"800,600","size":"100,100"}
 (set: $willToEscape to false)
 (set: $hasKey to false)
@@ -1135,6 +1273,21 @@ You tell the guards: “I mistakenly wandered into the castle can you help me go
 (set: $secretPassage to "closed")
 
 
+:: insulted {"position":"3100,200","size":"100,100"}
+Kamek got really sad an got his boss (Bowser) to come and get you. You unfortunately lose.
+
+[[Back to the Royal Chamber->restartLoss]] 
+
+
+:: miss {"position":"3400,800","size":"100,100"}
+Oh no! You guessed which side wrong, and the right swing took too long. 
+
+Good news is, you're still standing. The guard stares you down, ready for action.
+
+[[Stand Defensively in Fighting Pose->GuardCharge]]
+[[Go for another Right Swing->backToChamber]]
+
+
 :: nonchalant {"position":"4025,550","size":"100,100"}
 You say, "Oh hey bowser, I was looking for you to ask if you needed more help to look for peaches"
 [[Continue ->nonchalant2]]
@@ -1146,6 +1299,12 @@ Unfortunately you fail to take into account that a Dry Bones is never nice or he
    
     (go-to: "Level 1")
 ]
+
+
+:: restartLoss {"position":"3100,75","size":"100,100"}
+(link: "Restart")[
+   
+    (go-to: "Level 1")
 
 
 :: run {"position":"3825,1050","size":"100,100"}
