@@ -7,6 +7,7 @@ Peaches
   "ifid": "609d8995-eaba-4728-bd51-ea424bc74fbe",
   "format": "Harlowe",
   "format-version": "3.3.7",
+  "start": "Level 1",
   "zoom": 1
 }
 
@@ -147,21 +148,32 @@ You jump through the trapdoor, thinking that it might be a secrect exit out of t
 
 :: \ Wardrobe {"position":"1200,550","size":"100,100"}
 You look through the wardrobe and find an old ball gown, a jester hat, a pair of mismatched shoes, and a key.
-[[Pick up the gown ->Gown]]
-[[Pick up the hat ->Hat]]
-[[Pick up the shoes ->Shoes]]
+[[Look at the Ball Gowns ->Gown]]
+[[Look at the Hat ->Hat]]
+[[Look at the Shoes ->Shoes]]
 (if: not $hasKey)[
   [[Pick up the key ->Key]]
 ]
 [[Go back ->RoyalChamber]]
 
 
-:: \ Window {"position":"1400,550","size":"100,100"}
+:: \ Window {"position":"1450,550","size":"100,100"}
+(set: $window to true)
 You look out the window and, there is a large drop to the castle floor, leading to probable serious injury or death.
 [[Jump ->Fall Death]]
-[[It's not worth it ->RoyalChamber]]
+[[Perhaps their is another way down ->RoyalChamber]]
 (if: $hasNote)[[[Make paper airplane with note->Throw Note]]
 ]
+
+
+
+:: \ Window2 {"position":"1450,725","size":"100,100"}
+
+(if: $hasARope)[
+[[You tie your rope to the nearby desk and descend to the window below ->WindowBelow]]
+]
+
+[[Perhaps you should go another way ->RoyalChamber]]
 
 
 :: AllOut {"position":"4050,1350","size":"100,100"}
@@ -179,6 +191,30 @@ You are hurt badly.
 ]
 
 
+:: ApproachDoor {"position":"1450,1425","size":"100,100"}
+(if:  not $leftTorch or not $rightTorch)[
+Walking towards the door you reach out to the handle.
+As you try to open the door, the handle doesn't budge.
+(if:  not $leftTorch and not $rightTorch)[
+What should you do next?
+[[You take a few steps back to consider what to do. ->ReturnDim]]
+]
+(if:  not $leftTorch and $rightTorch)[
+What should you do next?
+[[You take a few steps back to consider what to do. ->RightLessDim]]
+]
+(if: $leftTorch and not $rightTorch)[
+What should you do next?
+[[You take a few steps back to consider what to do. ->LeftLessDim]]
+]
+[[You decide brute force may work, so you slam your body against the door full force->HitDoor]]
+]
+(if:  $leftTorch and $rightTorch)[
+As you approach the door with both torches having turned on you hear a clicking sound come from the locking mechanism.
+[[Try the handle. ->Level 2]]
+]
+
+
 :: AttackBowser {"position":"3950,1200","size":"100,100"}
 You charge Bowser head on, dodging his slow fists, you strike at every oppurtunity
 (link-reveal:"Continue",(t8n:"dissolve"))
@@ -191,6 +227,10 @@ As the battle goes on you realize your hits have little effect.
 
 :: Bed {"position":"1000,550","size":"100,100"}
 You do not find anything under the bed.
+But perhaps you could make a rope from your bedsheets.
+(if: not $hasRope1)[
+[[Make an improvised rope ->ImprovRope1]]
+]
 [[Go back ->RoyalChamber]]
 
 
@@ -223,6 +263,17 @@ Looking at the bookshelf, the books all look uninteresting
 :: Break Character {"position":"2900,1100","size":"100,100"}
 The guard realizes you are an imposter, quickly apprehends you and takes you back to the Royal Chamber.
 [[Back to chamber ->RoyalChamber]]
+
+
+:: BrightHall {"position":"1450,1850","size":"100,100"}
+(set: $leftTorch to true)
+(set: $rightTorch to true)
+Both torches in the hallway are now lit.
+
+[[Look at the left torch and lever.  ->LeftTorch]]
+[[Look at the Right torch and lever.  ->RightTorch]]
+
+[[Approach the Door.  ->ApproachDoor]]
 
 
 :: CallHelp {"position":"4300,1400","size":"100,100"}
@@ -270,6 +321,17 @@ You prepare youself for whatever Bowser may throw at you. Unfortunately for you,
 [[Fight to the end->dieIndependant]]
 
 
+:: DimHallway {"position":"1450,1100","size":"100,100"}
+As you approach the end of the hallway there is a door. You notice two torches on either side of the door. Both of these torches are unlit. Underneath both torches are two levers.
+
+[[Approach the Door.  ->ApproachDoor]]
+
+[[Look at the left torch and lever.  ->LeftTorch]]
+[[Look at the Right torch and lever.  ->RightTorch]]
+
+
+
+
 :: Distraction {"position":"4300,550","size":"100,100"}
 You shout, “Quick, I saw princess peach run across the courtyard!”
 [[Continue ->Distraction2]]
@@ -287,7 +349,7 @@ You decide a hidden corridor is too dangerous.
 [[Go back->Guard Patrool Encounter]]
 
 
-:: Door {"position":"1600,600","size":"100,100"}
+:: Door {"position":"1950,525","size":"100,100"}
 The door is locked.
 (if: $hasKey)[
   [[Open the door with the key->Level 2]]
@@ -381,7 +443,7 @@ The Emergency Exit works, and you are escape!
 You have successfully escaped the maze
 
 
-:: Fall Death {"position":"1400,650","size":"100,100"}
+:: Fall Death {"position":"1550,550","size":"100,100"}
 You jump and fall 5 stories to your immediate death on the cobblestone floor.
 [[Restart ->Level 1]]
 
@@ -391,6 +453,15 @@ The path was in fact, not a dead end...
 Ahead you see a gate 
 [[Forward ->Gate]]
 [[Backward ->deadendForward]]
+
+
+:: FirstFloor {"position":"2700,200","size":"100,100"}
+As you descened you're rope to the window of the first floor, you feel your knot coming lose. You quickly and narrowly make it inside the window as your rope falls lose behind you in the courtyard below.
+
+You realize the room you've put yourself into is an armory of sorts. 
+Clothes for various gaurds and soliders in Bowsers army are around you. This may be a perfect way to escape.
+
+[[Quickly look around the room. ->Level 3 (Dressing room)]]
 
 
 :: Flee the scene {"position":"2550,800","size":"100,100"}
@@ -413,8 +484,15 @@ You push on the gate, but it does not open. You notice a slot for a key. Without
 
 
 :: Gown {"position":"1150,650","size":"100,100"}
-This old ball gown may be pretty, but it is not very useful.
-[[Keep looking-> Wardrobe]]
+There are a variety of Ball Gowns of varying textures and colors.
+Perhaps you can make a rope out of these Gowns.
+(if: not $hasRope2)[
+  [[Make a makeshift rope ->ImprovRope2]]
+]
+(if:  $hasRope2)[
+  [[There's not much left to see -> Wardrobe]]
+]
+[[Keep looking in the Wardrobe -> Wardrobe]]
 
 
 :: Guard Patrool Encounter {"position":"2200,850","size":"100,100"}
@@ -446,10 +524,62 @@ You quietly slip into the shadows near a tapestry. From a passing guard's torchl
 [[Don't risk it->Don't risk it]]
 
 
+:: HitDoor {"position":"1450,1525","size":"100,100"}
+(set: $doorHitCounter to it + 1)
+As you hurl your body into the door it stings a great deal as you collide with the sturdy door.
+
+The door remains unmoved.
+
+What should you do next?
+
+(if:  not $leftTorch and $rightTorch)[
+[[You take a few steps back to consider what to do. ->RightLessDim]]
+]
+(if: $leftTorch and not $rightTorch)[
+[[You take a few steps back to consider what to do. ->LeftLessDim]]
+]
+(if: $doorHitCounter < 14)[
+[[You decide that hitting the door full force might do something->HitDoor]]
+]
+(if: $doorHitCounter >13 and $doorHitCounter < 20)[
+Brute Force seems to be working the door looks weakened
+[[You decide that hitting the door full force must do something->HitDoor]]
+]
+(if: $doorHitCounter >19)[
+The door seems liek its about to give way!
+[[Hit the door with all you've got!->Level 2 Alt]]
+]
+
+
+
 :: Ideas {"position":"800,200","size":"100,100"}
 IDEAS: 
 Level 1:
 Creat an inventory system, can find a key for the door, tie the clothes together as a rope or a hidden door in the wardrobe or under the bed
+
+
+:: ImprovRope1 {"position":"950,200","size":"100,100"}
+You were able to create a makeshift rope from the bed sheets.
+(set: $hasRope1 to true)
+(set: $hasARope to true)
+[[Go back to the middle of the room ->RoyalChamber]]
+
+
+:: ImprovRope2 {"position":"1050,200","size":"100,100"}
+You were able to create a makeshift rope from some clothes in the wardrobe.
+(set: $hasRope2 to true)
+(set: $hasARope to true)
+[[Go back to the middle of the room ->RoyalChamber]]
+
+
+:: ImprovRope3 {"position":"1150,200","size":"100,100"}
+You combined both of your makeshift ropes into a really long rope.
+Hopefully it will hold.
+(set: $hasRope1 to false)
+(set: $hasRope2 to false)
+(set: $hasRope3 to true)
+(set: $hasARope to true)
+[[Go back to the middle of the room ->RoyalChamber]]
 
 
 :: Inventory {"position":"800,400","size":"100,100"}
@@ -467,19 +597,51 @@ The key was from a previous prisoner that bribed one of the guards to obtain it,
 [[Try to unlock the door ->Door]]
 
 
+:: LeftLessDim {"position":"1300,1700","size":"100,100"}
+(set: $leftTorch to true)
+You look back at the hallway which has grown slightly brighter with the left torch being lit, but the right torch is still unlit.
+
+[[Look at the left torch and lever.  ->LeftTorch]]
+[[Look at the Right torch and lever.  ->RightTorch]]
+
+[[Approach the Door.  ->ApproachDoor]]
+
+
+:: LeftTorch {"position":"1250,1300","size":"100,100"}
+(if:  not $leftTorch and not $rightTorch)[
+The left torch is unlit and the lever underneath it is facing down
+[[Pull the lever ->LeftLessDim]]
+]
+
+(if:  $leftTorch and not $rightTorch)[
+The left torch is lit and the lever underneath it is facing up
+[[Pull the lever ->ReturnDimPull]]
+]
+
+(if:  not $leftTorch and $rightTorch)[
+The left torch is unlit and the lever underneath it is facing down
+[[Pull the lever ->BrightHall]]
+]
+
+
 :: Level 1 {"position":"1300,200","size":"100,100"}
 This story starts with you, Princess Peach. You are once again trapped in Bowser's castle, but you aren't going to wait to be rescued this time. It's time to escape on your own.
 [[Start ->RoyalChamber]]
 
 
-:: Level 2 {"position":"2200,750","size":"100,100"}
+:: Level 2 {"position":"2150,750","size":"100,100"}
 Congratulations! You unlocked the door. As the door clicks shut behind you, the sound of armored footsteps echoes through the halls. Guards roam with vigilance.
 [[Continue->Guard Patrool Encounter]]
 
 
+:: Level 2 Alt {"position":"2250,750","size":"100,100"}
+Wow! Well done you broke the hinges off the door. You don't have much time to celebrate though as the sound of armored footsteps echoes through the all round you. You're able to quickly grasp that Gaurds are patrooling nearby.
+[[Continue->Guard Patrool Encounter]]
+
+
 :: Level 3 (Dressing room) {"position":"2700,400","size":"100,100"}
-You’re in the dressing room, surrounded by various outfits. It’s time to choose your disguise.
-[[Peaches outfit ->Peaches outfit]]
+You’re surrounded by various outfits. It’s time to choose your disguise.
+[[You see your original dress ->Peaches outfit]]
 [[Patrol Guard Outfit ->Patrol Guard Outfit]]
 [[Dry Bones Costume ->Dry Bones Costume]]
 [[Boo Costume ->Boo Costume]]
@@ -499,6 +661,11 @@ He is furious
 :: Look through {"position":"4200,350","size":"100,100"}
 You go door to door in hopes of finding an exit but with no luck. Before all hope is lost, there is still one door left to check. You open the door and walk straight into Bowser's Lair! 
 [[Continue -> Lair]]
+
+
+:: LowerHallway {"position":"1450,1000","size":"100,100"}
+As you open the door your eyes adjust to the darkness laid before you. There is a dimly lit hallway. 
+[[Continue down the hallway.  ->DimHallway]]
 
 
 :: Make a run for it {"position":"1700,1000","size":"100,100"}
@@ -660,15 +827,68 @@ You get in your iconic peach dress and leave the dressing room. However, a patro
 [[Back to chamber ->RoyalChamber]]
 
 
+:: ReturnDim {"position":"1450,1200","size":"100,100"}
+You take a few steps back.
+The hallway is still completely dim, unlit by any torches.
+
+[[Look at the left torch and lever.  ->LeftTorch]]
+[[Look at the Right torch and lever.  ->RightTorch]]
+
+[[Approach the Door. ->ApproachDoor]]
+
+
+:: ReturnDimPull {"position":"1450,1300","size":"100,100"}
+(set: $leftTorch to false)
+(set: $rightTorch to false)
+After pulling that lever the room returns to being very dim. 
+You get the feeling that you shouldn't have switched that lever back down.
+
+[[Look at the left torch and lever.  ->LeftTorch]]
+[[Look at the Right torch and lever.  ->RightTorch]]
+
+[[Approach the Door. ->ApproachDoor]]
+
+
+:: RightLessDim {"position":"1625,1700","size":"100,100"}
+(set: $rightTorch to true)
+You look back at the hallway which has grown slightly brighter with the right torch being lit, but the left torch is still unlit.
+
+[[Look at the left torch and lever.  ->LeftTorch]]
+[[Look at the Right torch and lever.  ->RightTorch]]
+
+[[Approach the Door.  ->ApproachDoor]]
+
+
+:: RightTorch {"position":"1650,1300","size":"100,100"}
+(if:  not $rightTorch and not $leftTorch)[
+The right torch is unlit and the lever underneath it is facing down
+[[Pull the lever ->RightLessDim]]
+]
+
+(if:  $rightTorch and not $leftTorch)[
+The right torch is lit and the lever underneath it is facing up
+[[Pull the lever ->ReturnDimPull]]
+]
+
+(if: not $rightTorch and $leftTorch)[
+The right torch is unlit and the lever underneath it is facing down
+[[Pull the lever ->BrightHall]]
+]
+
+
+
+
 :: RoyalChamber {"position":"1300,400","size":"100,100"}
 You are standing in the Royal Chamber and you look around. 
-[Looking around the room again you see
-[[Examine Window -> Window]]
+Looking around the room again you see
+(if: not $window)[[[Examine Window -> Window]]]
+(if:  $window and $hasARope)[[[Examine Window -> Window2]]]
+(if:  $hasRope1 and  $hasRope2)[[[Combine both of your ropes ->ImprovRope3]]]
 [[Examine Door ->Door]]
 [[Examine Bed ->Bed]]
 [[Examine Wardrobe-> Wardrobe]]
 [[Examine Desk-> Desk]]
-]
+
 
 
 :: Run for it {"position":"2300,1100","size":"100,100"}
@@ -700,7 +920,7 @@ You start a conversation with the guard, making sure to alter your voice. He eve
 ]
 
 
-:: Throw Note {"position":"1400,900","size":"100,100"}
+:: Throw Note {"position":"1650,550","size":"100,100"}
 You make a paper airplane and toss the note out the window, watching it fly away.
 (set: $hasNote to false)
 [[Turn away -> Window]]
@@ -710,6 +930,15 @@ You make a paper airplane and toss the note out the window, watching it fly away
 You decide not to risk your health down a dark, musty passage and turn back.
 (set: $independenceScore to it + 1)
 [[Try another strategy->Guard Patrool Encounter]]
+
+
+:: WindowBelow {"position":"1450,850","size":"100,100"}
+In front of you is an empty bed room full of cobwebs. There isn't much in the room, but there is a door.
+[[Approach the door.  ->LowerHallway]]
+[[Head back the way you came.  ->RoyalChamber]]
+(if:  $hasRope3)[
+[[You can continue to climb down top the next window below you ->FirstFloor]]
+]
 
 
 :: Wrong {"position":"2950,800","size":"100,100"}
@@ -790,7 +1019,6 @@ The note is gone...
 
 
 :: dieIndependant {"position":"4000,1500","size":"100,100"}
-
 Though you give it your all, sometimes that isnt enough. Bowser defense is unmatched. Jumping into the air, he slams down letting out a large shockwave knocking you down. Though you gave your best, this it was all for naught. 
 [[Try Again->RoyalChamber]]
 
@@ -830,6 +1058,17 @@ You tell the guards: “I mistakenly wandered into the castle can you help me go
 (set: $room1Marked to false)
 (set: $room1LeftMarked to false)
 (set: $room1RightMarked to false)
+
+(set: $window to false)
+(set: $hasRope1 to false)
+(set: $hasRope2 to false)
+(set: $hasRope3 to false)
+(set: $hasARope to false)
+
+(set: $leftTorch to false)
+(set: $rightTorch to false)
+
+(set: $doorHitCounter to 0)
 
 
 :: nonchalant {"position":"3700,725","size":"100,100"}
