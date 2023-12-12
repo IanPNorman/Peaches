@@ -8,7 +8,7 @@ Peaches
   "format": "Harlowe",
   "format-version": "3.3.7",
   "start": "Level 1",
-  "zoom": 1
+  "zoom": 0.6
 }
 
 
@@ -177,9 +177,7 @@ You look out the window and, there is a large drop to the castle floor, leading 
 ]
 
 
-
 :: \ Window2 {"position":"1450,725","size":"100,100"}
-
 (if: $hasARope)[
 [[You tie your rope to the nearby desk and descend to the window below ->WindowBelow]]
 ]
@@ -187,9 +185,15 @@ You look out the window and, there is a large drop to the castle floor, leading 
 [[Perhaps you should go another way ->RoyalChamber]]
 
 
+:: \ Window3 {"position":"1975,1250","size":"100,100"}
+You look out the window, but are greated by a new view. In the distance you see your kindgom and long to return. 
+[[Jump ->Fall Death]]
+[[Look around the room again ->HallwayRoom]]
+
+
 :: AllOut {"position":"3975,1300","size":"100,100"}
 You give it everything you have. After dodging several fireballs, Bowser is beginning to look winded. 
-(link-reveal:"Continue",(t8n:"dissolve"))
+(link-replace:"Continue",(t8n:"dissolve"))
 [
 Out of nowhere Bowser hits you with his tail with a swift spin strike. 
 You are hurt badly. 
@@ -229,7 +233,7 @@ As you approach the door with both torches having turned on you hear a clicking 
 :: AttackBowser {"position":"3975,1175","size":"100,100"}
 (if: $bowserLoss is false)[
 You charge Bowser head on, dodging his slow fists, you strike at every oppurtunity
-(link-reveal:"Continue",(t8n:"dissolve"))
+(link-replace:"Continue",(t8n:"dissolve"))
 [
 As the battle goes on you realize your hits have little effect. 
 [[Call for help->CallHelp]]
@@ -241,7 +245,6 @@ He just stares at you for a second before turning and opening the gate... he say
 Bowser just wants to be loved
 [[Too bad->You win]]
 ]
-
 
 
 :: Bed {"position":"1000,550","size":"100,100"}
@@ -261,22 +264,24 @@ You get into a boo outfit. You leave the room, but there is a guard there! The g
 <<<<<<< HEAD
 
 
-:: Bookshelf {"position":"1200,925","size":"100,100"}
+:: Bookshelf {"position":"2075,1250","size":"100,100"}
 Looking at the bookshelf, the books all look uninteresting
+[[Look around the room again ->HallwayRoom]]
+
 (link-replace:"Book",(t8n:"dissolve"))[ It is a book, written by someone, about something... ]
 (link-replace:"Book",(t8n:"dissolve"))[ Book... by somone... it doesn't matter]
+(link-replace:"Book",(t8n:"dissolve"))[ "Bowser's Other Diary"
+* (link-rerun:"Read")[{(t8n:"zoom")+(t8n-time:0.4s)(dialog:"I cry")}]]
 (link-replace:"Book",(t8n:"dissolve"))[ Just another book, why do you care]
 (link-replace:"Book",(t8n:"dissolve"))[ ooooh, this one looks interesting. SIKE. i lied]
 (link-replace:"Book",(t8n:"dissolve"))["How to Defeat Bowser"
-* (link-rerun:"Read")[{
-(t8n:"zoom")+(t8n-time:0.4s)(dialog:"You can't...")}]]
-(link-replace:"Book",(t8n:"dissolve"))[You hear a metalic clank coming from behind you
+* (link-rerun:"Read")[{(t8n:"zoom")+(t8n-time:0.4s)(dialog:"You can't...")}]]
+(link-replace:"Book",(t8n:"dissolve"))[You hear a metalic clank coming from behind you, you should check it out
 (set: $secretPassage to "open")]
-(link-replace:"Book",(t8n:"dissolve"))[ "A Song of Ice and Fire: Winds of Winter by George RR Martin!!! 
-* (link-rerun:"Read")[{
-(t8n:"zoom")+(t8n-time:0.4s)(dialog:"lol")}]]
+(link-replace:"Book",(t8n:"dissolve"))[ "A Song of Ice and Fire: Winds" of Winter by George RR Martin!!! 
+ * (link-rerun:"Read")[{(t8n:"zoom")+(t8n-time:0.4s)(dialog:"lol")}]]
 (link-replace:"Book",(t8n:"dissolve"))[Well, you must really like books.]
-=======
+
 
 
 :: Break Character {"position":"2900,1100","size":"100,100"}
@@ -305,7 +310,6 @@ Both torches in the hallway are now lit.
         [[Thank Mario for saving you->MarioLose]]
     ]
 
->>>>>>> Seth
 
 
 :: Captured {"position":"1700,1100","size":"100,100"}
@@ -318,13 +322,13 @@ The guards originally for your trick and helped escort you, however a loud alarm
 [[Continue ->Other Level 5]]
 
 
-:: Corridor {"position":"1950,1200","size":"100,100"}
+:: Corridor {"position":"1875,1450","size":"100,100"}
 You move slowly, feeling the walls for guidance. The passage seems stable, but you notice a faint smell of gas, and you start to feel nauseous.
 [[Continue on->Corridor2]]
 [[Turn back->Turn back]]
 
 
-:: Corridor2 {"position":"1900,1300","size":"100,100"}
+:: Corridor2 {"position":"1825,1550","size":"100,100"}
 You decide not to let a little nausea slow you down, and even though the path forward is dark, you press on.
 [[Continue->Gas Death]]
 
@@ -340,6 +344,16 @@ You prepare youself for whatever Bowser may throw at you. Unfortunately for you,
 [[Fight to the end->dieIndependant]]
 
 
+:: Desk {"position":"2175,1250","size":"100,100"}
+Brushing dust off the desk, you find some pens, some brightly colored parchment and a book...
+(if: not $hasNote)[
+  [[Write a note ->Note2]]
+]
+(link-replace:"Brush off book",(t8n:"dissolve"))[ A title becomes visable beneath the dust: 
+(link-rerun:"Bowser's Diary")[{(t8n:"zoom")+(t8n-time:0.4s)(dialog:"What is love?")}]]
+[[Go back ->HallwayRoom]]
+
+
 :: DimHallway {"position":"1450,1100","size":"100,100"}
 As you approach the end of the hallway there is a door. You notice two torches on either side of the door. Both of these torches are unlit. Underneath both torches are two levers.
 
@@ -347,8 +361,6 @@ As you approach the end of the hallway there is a door. You notice two torches o
 
 [[Look at the left torch and lever.  ->LeftTorch]]
 [[Look at the Right torch and lever.  ->RightTorch]]
-
-
 
 
 :: Distraction {"position":"4300,550","size":"100,100"}
@@ -361,11 +373,6 @@ It works, and Bowser rushes out to chase Princess Peach. It gives you an opening
 [[Open the Emergency Exit ->Emergency Exit]]
 [[Open the trapdoor -> Trapdoor]]
 [[Both are too risky, turn back ->turn back]]
-
-
-:: Don't risk it {"position":"2100,1100","size":"100,100"}
-You decide a hidden corridor is too dangerous.
-[[Go back->Guard Patrool Encounter]]
 
 
 :: Door {"position":"1600,600","size":"100,100"}
@@ -491,7 +498,7 @@ You try to run away, but the guards see you, quickly apprehend you and you are b
 [[Back to chamber ->RoyalChamber]]
 
 
-:: Gas Death {"position":"1900,1400","size":"100,100"}
+:: Gas Death {"position":"1825,1650","size":"100,100"}
 As you keep going, the nausea only gets stronger, and the corridor is now pitch black. You eventually hit a dead end, but it is too late. You faint, only to never wake up.
 (link: "Restart")[
    
@@ -533,20 +540,30 @@ As you quit observe the guards, they seem to leave a gap of a few seconds that y
 [[Cause distraction ->distraction]]
 
 
+:: HallwayRoom {"position":"1950,1100","size":"100,100"}
+You enter a small dimly lit room. Looking around it appears to be an old abandoned study. From the light coming in from the window manage to see a few things 
+[[A small desk->Desk]]
+(link-reveal:"A spider web ",(t8n:"dissolve"))[with a spider]
+[[A fancy bookshelf ->Bookshelf]] 
+[[An empty bookshelf ->SecretPassage]]
+[[A window -> Window3]]
+
+
+
 :: Hat {"position":"1150,750","size":"100,100"}
 This jester hat makes noise when you move, probably not ideal for an escape.
 [[Keep looking-> Wardrobe]]
 
 
-:: Hidden Corridor {"position":"2000,1100","size":"100,100"}
+:: Hidden Corridor {"position":"1875,1350","size":"100,100"}
 You enter the hidden corridor, which you can barely crawl through and has no light.
 [[Continue ->Corridor]]
 
 
 :: Hiding in Shadows {"position":"2050,1000","size":"100,100"}
-You quietly slip into the shadows near a tapestry. From a passing guard's torchlight, you briefly catch a glimpse of what looks like a hidden corridor.
-[[Go into the hidden Corridor->Hidden Corridor]]
-[[Don't risk it->Don't risk it]]
+You quietly slip into the shadows near a tapestry. Behind the tapestry you find a hidden door. 
+[[Hide in the room->HallwayRoom]]
+[[Wait for guard to pass->wait]]
 
 
 :: HitDoor {"position":"1450,1525","size":"100,100"}
@@ -574,7 +591,6 @@ Brute Force seems to be working the door looks weakened
 The door seems liek its about to give way!
 [[Hit the door with all you've got!->Level 2 Alt]]
 ]
-
 
 
 :: Ideas {"position":"800,200","size":"100,100"}
@@ -700,7 +716,11 @@ You have no patience and decide to make a run for it.
 
 
 :: MarioLose {"position":"4225,1450","size":"100,100"}
-You leave and are brought to you Mario's home. You have escaped, but you are still not free. The only thing that has changed is the bird cage which surrounds you. Who will rescue you now? Bowser?
+You leave and go Mario's home with him. You have escaped, but you are still not free. The only thing that has changed is the bird cage which surrounds you. You are neither strong nor independant. Who will rescue you now? Bowser?
+(link: "Restart")[
+   
+    (go-to: "Level 1")
+]
 
 
 :: Maze {"position":"875,975","size":"100,100"}
@@ -808,6 +828,11 @@ You write a note, explaining how you got kidnapped again and asking for help.
 (set: $hasNote to true)[[Finish writing and seal envelope -> Desk]]
 
 
+:: Note2 {"position":"2175,1350","size":"100,100"}
+You write a note, to your friend Princess Daisy asking for help in escaping Bowser's castle.
+(set: $hasNote to true)[[Finish writing and seal envelope ->Desk]]
+
+
 :: Offer help {"position":"4175,550","size":"100,100"}
 You exclaim: “Don’t worry bowser! I’ll help find Princess Peach!"
 [[Continue ->Offer help2]]
@@ -908,8 +933,6 @@ The right torch is unlit and the lever underneath it is facing down
 ]
 
 
-
-
 :: RoyalChamber {"position":"1300,400","size":"100,100"}
 You are standing in the Royal Chamber and you look around. 
 Looking around the room again you see
@@ -922,11 +945,17 @@ Looking around the room again you see
 [[Examine Desk-> Desk]]
 
 
-
 :: Run for it {"position":"2300,1100","size":"100,100"}
 A close call! A guard almost sees you, but you manage to blend in with the statues.
 (set: $independenceScore to it - 1)
 [[Continue ->Level 3 (Dressing room)]]
+
+
+:: SecretPassage {"position":"1875,1250","size":"100,100"}
+An empty bookshelf, how peculiar. 
+[[Go back ->HallwayRoom]]
+(if: $secretPassage is "open")[A secret passage hidden behind the bookshelf has opened
+[[Enter->Hidden Corridor]]]
 
 
 :: Send Note {"position":"3000,1100","size":"100,100"}
@@ -958,10 +987,10 @@ You make a paper airplane and toss the note out the window, watching it fly away
 [[Turn away -> Window]]
 
 
-:: Turn back {"position":"2000,1300","size":"100,100"}
+:: Turn back {"position":"1925,1550","size":"100,100"}
 You decide not to risk your health down a dark, musty passage and turn back.
 (set: $independenceScore to it + 1)
-[[Try another strategy->Guard Patrool Encounter]]
+[[Try another strategy->HallwayRoom]]
 
 
 :: WindowBelow {"position":"1450,850","size":"100,100"}
@@ -1055,7 +1084,6 @@ The note is gone...
 
 
 :: dieIndependant {"position":"3975,1450","size":"100,100"}
-
 Though you give it your all, sometimes that isnt enough. Bowser defense is unmatched. Jumping into the air, he slams down letting out a large shockwave knocking you unconcious. Though you gave your best, this it was all for naught. 
 (link: "Return to Royal Chamber")[
    (set: $bowserLoss to true)
@@ -1104,6 +1132,7 @@ You tell the guards: “I mistakenly wandered into the castle can you help me go
 
 (set: $doorHitCounter to 0)
 (set: $bowserLoss to false)
+(set: $secretPassage to "closed")
 
 
 :: nonchalant {"position":"4025,550","size":"100,100"}
@@ -1130,3 +1159,8 @@ You decide both are too risky and try to turn back, but in a heat of the moment 
    
     (go-to: "Level 1")
 ]
+
+
+:: wait {"position":"2125,1100","size":"100,100"}
+The guard passes
+[[Come out from tapestry->Guard Patrool Encounter]]
